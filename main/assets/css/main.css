@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Hide vertical scrollbar */
+::-webkit-scrollbar {
+  width: 0;
+}
+
+/* Hide horizontal scrollbar */
+::-webkit-scrollbar {
+  height: 0;
+}
+
+#__nuxt,
+#__layout,
+
+iframe{
+  width:100vw;
+  height: 100vh;
+}
+
+.homelink{
+  position: absolute;
+  font-size: 5vw;
+}
+
+body,
+html {
+  /* height: auto;
+  min-height: 100vh !important;
+  background: #f7f7f7;
+  overflow-x: hidden;
+   cursor: default; */
+   background: black;
+   /* background: white; */
+}
+
+.mockbg{
+  /* background-image: url('~static/ipadmock.png'); */
+  height: 100vh;
+  z-index: 10000;
+  position: absolute;
+  pointer-events: none;
+}
+
+
+
+@media (min-width: 768px) {
+ 
+}
