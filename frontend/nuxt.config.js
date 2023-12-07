@@ -2,9 +2,14 @@ export default {
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
+  store: {
+    // Modules to include in the store
+    // (Make sure to include 'metaemails' here)
+    modules: ['metaemails'],
+  },
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'frontend',
+    title: 'Megan',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,6 +22,12 @@ export default {
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
+  },
+
+  loadingIndicator: {
+    name: 'circle',
+    color: '#ffffff00',
+    background: 'white'
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -33,25 +44,34 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    { src: '@plugins/masonry', mode: 'client' },
+    { src: '@plugins/lazy', mode: 'client' },
+    { src: '@plugins/slider', mode: 'client' },
+    '~/plugins/preview.client.js',
   ],
-
-  // postcss: {
-  //   postcssOptions: {
-  //     plugins: {
-  //       tailwindcss: {},
-  //       autoprefixer: {},
-  //     },
-  //   },
-  // },
+  gsap: {
+    /* Module Options */
+  },
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/tailwindcss
-    '@nuxtjs/tailwindcss',
+    // "@nuxtjs/sanity",
+    // '@nuxtjs/sanity/module',
+    'nuxt-gsap-module',
+    '@nuxtjs/sanity/module',
+    '@nuxt/image'
   ],
+
+  sanity: {
+    // module options
+    projectId: 'xezmn8bb',
+    apiVersion: '2023-09-05',
+    useCdn: false, 
+  },
+
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -59,5 +79,27 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+    extend(config, { isDev, isClient }) {
+      // Check if the IGNORE_BUILD_ERRORS environment variable is set to true
+      if (process.env.IGNORE_BUILD_ERRORS === 'true') {
+        // Skip some build steps or perform custom logic here
+      }
+    },
+    postcss: {
+      postcssOptions: {
+        plugins: {
+          tailwindcss: {},
+          autoprefixer: {},
+        },
+      },
+    },
+  },
+
+  image: {
+    sanity: {
+      projectId: 'xezmn8bb',
+      dataset: 'production',
+      useCdn: false, 
+    },
+  },
 }
