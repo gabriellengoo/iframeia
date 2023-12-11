@@ -11,7 +11,7 @@
           </div>
           <!-- You can customize the content here, replace it with your text -->
           <div class="botnoti">
-            <p class="font-bold">Web dev</p>
+            <p class="font-bold">Web Dev</p>
             <p class="font-light">Hey, Check your notes app !</p>
             <!-- Close button -->
           </div>
