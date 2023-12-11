@@ -1,69 +1,93 @@
 <template>
-    <div class="iphone ipadbg">
+    <div class="iphone ">
         <!-- <div >  
             <img class=" mockbg " src="/ipadmock.png" />
         </div> -->
       <div class="status-bar"></div>
      
-      <!-- <Time /> -->
 
-      <div class="screen">
-        <Notification />
-        <div class="screen slider " ref="slider">
-            <div class="swiper-wrapper">
-              <!-- Slide 1 -->
-              <div class="swiper-slide p-10">
-                        <!-- top grid all -->
-                        <div class="">
-                          <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
-                              <div v-for="(app, index) in apps" :key="index" class="app">
-                                  <a :href="app.link">
-                                  <!-- Use the SVG content directly -->
-                                  <div v-html="app.icon" class="app-icon"></div>
-                                  <span class="app-label">{{ app.name }}</span>
-                                  </a>
-                              </div>
-                              </div>
+      <div class="screen ipadbg">
+        <Time />
+    
 
-                          <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
-                                  <div v-for="(app, index) in apps2" :key="index" class="app">
-                                      <a :href="app.link">
-                                      <!-- Use the SVG content directly -->
-                                      <div v-html="app.icon" class="app-icon"></div>
-                                      <span class="app-label">{{ app.name }}</span>
-                                      </a>
-                                  </div>
-                              </div>
-                            </div>
-              </div>
+        <div class="swipe">
+             <!-- top grid all -->
+                <div class="toprow">
+                    <div class="toprowinner">
+                    <!-- Top row with 3 square images -->
+                    <div class="top-row-image">
+                        <div class="grid">
+                                <!-- Top row with two squares -->
+                                <div class="clock">
+                                    <div>
+                                    <!-- Your content for the first square -->
+                                    <!-- Example: -->
+                                    <!-- <AnalogClock /> -->
+                                    <!-- <img src="your-image-path" alt="Square 1" /> -->
+                                    </div>
+                                </div>
 
-              <!-- Slide 2 -->
-              <div class="swiper-slide p-10">
-                <div class="">
-                          <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
-                                <!-- <div>easter egg app</div> -->
-                              <div v-for="(app, index) in apps" :key="index" class="app">
-                                  <a :href="app.link">
-                                  <!-- Use the SVG content directly -->
-                                  <div v-html="app.icon" class="app-icon"></div>
-                                  <span class="app-label">{{ app.name }}</span>
-                                  </a>
-                              </div>
-                              </div>
-                            </div>
-              </div>
+                                <div class="top-row-imageg">
+                                    <div>
+                                    <!-- Your content for the second square -->
+                                    <!-- Example: -->
+                                    <!-- <img src="your-image-path" alt="Square 2" /> -->
+                                    </div>
+                                </div>
 
-              <!-- ... Add more slides as needed ... -->
-            </div>
+                                <!-- One big square at the bottom -->
+                                <div class="bottom-row-image">
+                                    <div>
+                                    <!-- Your content for the big square -->
+                                    <!-- Example: -->
+                                    <!-- <img src="your-image-path" alt="Big Square" /> -->
+                                    </div>
+                                </div>
+                                </div>
+                    </div>
 
-            <!-- Add Swiper pagination -->
-            <div class="dots-container swiper-pagination"></div>
+                    
 
-          </div>
+                    <div v-for="(image, index) in topRowImages" :key="index" class="top-row-image">
+                        <img :src="image" alt="Top Row Image" />
+                        <div class="overlay-text">On this day<span class="overlay-text-inner">sep 15, 2020</span></div>
+                    </div> 
 
+                    <div class="top-row-image">
+                        <CalendarWidget />
+                    </div>
+                </div>
+                </div>
+
+            <!-- Two rows with 6 app icons each -->
+                <div class="grid2">
+                    <!-- <div class="grid2inner"> -->
+                <div v-for="(app, index) in apps" :key="index" class="app">
+                    <a :href="app.link">
+                    <!-- Use the SVG content directly -->
+                    <div v-html="app.icon" class="app-icon"></div>
+                    <span class="app-label">{{ app.name }}</span>
+                    </a>
+                </div>
+                
+                    <!-- </div> -->
+                </div>
+            <!-- Two rows with 6 app icons each -->
+                <div class="grid2">
+                    <div v-for="(app, index) in apps2" :key="index" class="app">
+                        <a :href="app.link">
+                        <!-- Use the SVG content directly -->
+                        <div v-html="app.icon" class="app-icon"></div>
+                        <span class="app-label">{{ app.name }}</span>
+                        </a>
+                    </div>
+                </div>
+        </div>
+
+        <div class="dots-container">
+        <div class="dot filled"></div>
+        <div class="dot faded"></div>
+        </div>
 
       <!-- active apps -->
       <div class="activeappscont">
@@ -88,21 +112,16 @@
   import AnalogClock from '@/components/AnalogClock.vue';
   import Time from '@/components/Time.vue';
   import CalendarWidget from '@/components/CalendarWidget.vue';
-  import Notification from '@//components/Notification.vue';
-  import Swiper from 'swiper/bundle';
-import 'swiper/swiper-bundle.min.css';
 
   export default {
     components: {
     AnalogClock,
     Time,
     CalendarWidget,
-    Notification,
     },
 
     data() {
     return {
-     
         topRowImages: [
             require('~/static/homeimg.jpeg'), // Use require for local images
             // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
@@ -151,7 +170,7 @@ import 'swiper/swiper-bundle.min.css';
         {
           name: 'Notes',
           icon: '', // Leave it empty for now
-          link: '/notes',
+          link: '/app1',
         },
         {
           name: 'Podcast',
@@ -179,7 +198,6 @@ import 'swiper/swiper-bundle.min.css';
     };
   },
   mounted() {
-    this.initSwiper();
     // Fetch and set the SVG content dynamically for the 'FaceTime' app
     this.fetchSVG('facetime.svg').then((svgContent) => {
       this.$set(this.apps, 0, {
@@ -216,7 +234,7 @@ import 'swiper/swiper-bundle.min.css';
         link: '/app1',
       });
     });
-    this.fetchSVG('camera.svg').then((svgContent) => {
+    this.fetchSVG('appstore.svg').then((svgContent) => {
       this.$set(this.apps, 5, {
         name: 'App Store',
         icon: svgContent,
@@ -235,7 +253,7 @@ import 'swiper/swiper-bundle.min.css';
       this.$set(this.apps2, 1, {
         name: 'Notes',
         icon: svgContent,
-        link: '/notes',
+        link: '/app1',
       });
     });
     this.fetchSVG('podcast.svg').then((svgContent) => {
@@ -268,11 +286,6 @@ import 'swiper/swiper-bundle.min.css';
     });
   },
   methods: {
-      // Call this method to show the notification
-      showCustomNotification() {
-      this.$refs.notification.notificationText = "Custom Notification!";
-      this.$refs.notification.showNotification();
-    },
     fetchSVG(url) {
       return fetch(url)
         .then((response) => response.text())
@@ -281,30 +294,12 @@ import 'swiper/swiper-bundle.min.css';
           return ''; // Return an empty string if there's an error
         });
     },
-  initSwiper() {
-      // Initialize Swiper with options
-      this.swiper = new Swiper(this.$refs.slider, {
-        slidesPerView: 'auto',
-        pagination: {
-          el: '.swiper-pagination',
-          clickable: true,
-        },
-      });
-    },
   },
 
   };
   </script>
   
   <style scoped>
-
-.swiper-wrapper {
-  z-index: 40 !important;
-}
-
-.slider {
-  height: calc(100% - 0.5rem);
-}
  .top-row-image {
   position: relative;
   display: inline-block;
@@ -341,7 +336,7 @@ import 'swiper/swiper-bundle.min.css';
     width: 100vw;
     height: 100vh;
     /* border: 16px solid #000; */
-    /* border-radius: 36px; */
+    border-radius: 36px;
     overflow: hidden;
     position: relative;
   }
@@ -353,11 +348,10 @@ import 'swiper/swiper-bundle.min.css';
   
   .screen {
     height: calc(100% - 20px);
-    width: 100vw;
-    /* height: 100vh; */
+    height: 100vh;
     /* background-color: #fff; */
     overflow-y: auto;
-    /* padding: 10px; */
+    padding: 10px;
     display: flex;
     display: grid;
     flex-wrap: wrap;
@@ -367,7 +361,6 @@ import 'swiper/swiper-bundle.min.css';
     /* border-radius: 32px; */
   }
   
-
  /* .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

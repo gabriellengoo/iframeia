@@ -77,7 +77,7 @@
                   <NuxtLink
                     class="ani uppercase hover"
                     v-if="!item.draft && item.reference.slug"
-                    :to="`/project/${item.reference.slug}`"
+                    :to="`/poems/${item.reference.slug}`"
                   >
                     <figcaption :class="{ 'text-left ': !displayGrid }">
                       <!--  :class="size == 'small' ? 'smaller-text' : ''" 
@@ -253,7 +253,7 @@
                         : 'items-start',
                     ]"
                     v-if="!item.draft && item.reference.slug"
-                    :to="`/project/${item.reference.slug}`"
+                    :to="`/poems/${item.reference.slug}`"
                     @mouseenter.native="hover(item)"
                     @mouseleave.native="leave()"
                   >

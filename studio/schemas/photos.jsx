@@ -1,14 +1,13 @@
 import React from "react";
 import Emoji from "a11y-react-emoji";
-const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="✍️" />;
-const Links = () => <Emoji style={{ fontSize: "2rem" }} symbol="🔊" />;
+const Photos = () => <Emoji style={{ fontSize: "2rem" }} symbol="📷" />;
 
 export default {
-  name: "project",
-  title: "Poems",
+  name: "photos",
+  title: "Photos",
   type: "document",
   // liveEdit: true,
-  icon: Project,
+  icon: Photos,
   fields: [
     {
       name: "title",
@@ -17,7 +16,7 @@ export default {
     },
     {
       name: "year",
-      title: "Summery",
+      title: "Year",
       type: "string",
     },
     {
@@ -27,13 +26,52 @@ export default {
       options: { source: "title" },
     },
     {
-      name: "shortBio",
-      title: "Poem text",
-      type: "blockContent",
+      name: "meta",
+      title: "Meta",
+      type: "array",
+      options: {
+        modal: "popover",
+      },
+      of: [
+        {
+          name: "meta",
+          title: "Meta",
+          type: "object",
+          fields: [
+            {
+              name: "title",
+              title: "Title",
+              type: "string",
+            },
+            {
+              name: "content",
+              title: "Content",
+              type: "string",
+            },
+          ],
+          preview: {
+            select: {
+              title: "content",
+              subtitle: "title",
+            },
+          },
+        },
+      ], 
+    },
+    {
+      name: "production",
+      title: "Project footer",
+      description: " This is the footer on project pages",
+      type: "string",
+    },
+    {
+      name: "location",
+      title: "Location",
+      type: "string",
     },
     {
       name: "slider",
-      title: "Images",
+      title: "Slider",
       type: "array",
       options: {
         layout: "grid",
@@ -164,35 +202,6 @@ export default {
               };
             },
           },
-        },
-      ],
-    },
-    {
-      name: "footer",
-      title: "Links",
-      type: "array",
-      of: [
-        {
-          name: "button",
-          title: "Button",
-          type: "object",
-          icon: Links,
-          fields: [
-            {
-              name: "title",
-              title: "Title",
-              type: "string",
-            },
-            {
-              name: "link",
-              title: "Link",
-              type: "url",
-              validation: (Rule) =>
-                Rule.uri({
-                  scheme: ["http", "https", "mailto", "tel"],
-                }),
-            },
-          ],
         },
       ],
     },

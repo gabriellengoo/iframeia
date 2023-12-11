@@ -2,8 +2,13 @@
     <div class="ios-header">
       <div class="status-bar">
         <div class="time">{{ currentTime }}<div class="date">{{ currentDate }}</div></div>
-        <div class="wifi-icon"></div>
-        <div class="battery-icon">100%</div>
+        <div class="battside">  
+          <div class="battery-icon">
+            <div class="pl-1"><SvgWifi></SvgWifi></div>
+            <div class="pl-1"> 100% </div>
+            <div class="pl-1"><SvgBattery></SvgBattery></div>
+          </div>
+        </div>
       </div>
     </div>
   </template>
@@ -25,12 +30,13 @@
         const now = new Date();
         const hours = now.getHours().toString().padStart(2, '0');
         const minutes = now.getMinutes().toString().padStart(2, '0');
+        const period = now.getHours() < 12 ? 'AM' : 'PM'; // Determine AM or PM
         const day = now.toLocaleDateString('en-US', { weekday: 'short' });
-        const date = now.getDate();
         const month = now.toLocaleDateString('en-US', { month: 'short' });
+        const date = now.getDate();
   
-        this.currentTime = `${hours}:${minutes}`;
-        this.currentDate = `${day}, ${date} ${month}`;
+        this.currentTime = `${hours}:${minutes} ${period}`;
+        this.currentDate = `${day} ${month} ${date}`;
       },
     },
   };
@@ -39,6 +45,12 @@
   <style scoped>
   .ios-header {
     background-color: #f0f0f000;
+    padding: 5px;
+    padding-top: 1px;
+    position: fixed;
+    /* top: 2vh; */
+    width: 100vw;
+    z-index: 100000;
     /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
   }
   
@@ -46,20 +58,30 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 20px;
-    width: 95vw;
+    padding: 5px;
+    padding-top: 0px;
+    font-size: 12px;
+    /* width: 100vw; */
+    color: #ffffff;
+    color: #000000;
+    padding-top: 0px;
+   
   }
   
   .time {
-    font-size: 14px;
+    justify-content: flex-start;
     /* font-weight: bold; */
     display: flex;
-    color: #ffffff;
+
+  }
+
+  .battside{
+    display: flex;
+    justify-content: flex-end;
   }
   
   .date {
-    font-size: 14px;
-    color: #ffffff;
+
     padding-left: 1vw;
   }
   
@@ -70,11 +92,12 @@
   }
   
   .battery-icon {
-    width: 20px;
-    height: 20px;
-    font-size: 14px;
-    color: #ffffff;
-    /* background-color: #2196F3; Blue for battery, adjust as needed */
+    display: flex;
+
+    align-content: center;
+    align-items: center;
+    /* padding: 2vw; */
+    flex-direction: row;
   }
   </style>
   

@@ -21,6 +21,20 @@ iframe{
   height: 100vh;
 }
 
+.swiper-pagination-bullet-active {
+  opacity: 1;
+  background: #ffffff !important;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  display: inline-block;
+  border-radius: 50%;
+  background: #f7f7f7 !important;
+  opacity: 0.2;
+}
+
 .homelink{
   position: absolute;
   font-size: 5vw;

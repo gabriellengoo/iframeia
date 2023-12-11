@@ -1,7 +1,8 @@
 <template>
   <main class="min-h-full">
     <!-- <TransitionComponent /> -->
-    
+    <Time />
+
     <Nuxt />
     <LayoutFooter
       class="fixed"
@@ -16,6 +17,7 @@
 </template>
 <script>
 import { mapActions, mapMutations } from 'vuex'
+import Time from '@/components/Time.vue';
 // import TransitionComponent from '~/components/TransitionComponent.vue';
 // import Lenis from '@studio-freight/lenis'; 
 
@@ -63,6 +65,7 @@ export default {
   components: {
     // TransitionComponent,
     // ImagePlaceholder,
+    Time,
   },
   watch: {
     $route: function (value) {
