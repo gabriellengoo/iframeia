@@ -2,7 +2,7 @@
   <main class="min-h-full">
     <!-- <TransitionComponent /> -->
     <Time />
-
+    <Notification />
     <Nuxt />
     <LayoutFooter
       class="fixed"
@@ -18,6 +18,7 @@
 <script>
 import { mapActions, mapMutations } from 'vuex'
 import Time from '@/components/Time.vue';
+import Notification from '@/components/Notification.vue';
 // import TransitionComponent from '~/components/TransitionComponent.vue';
 // import Lenis from '@studio-freight/lenis'; 
 
@@ -65,6 +66,7 @@ export default {
   components: {
     // TransitionComponent,
     // ImagePlaceholder,
+    Notification,
     Time,
   },
   watch: {

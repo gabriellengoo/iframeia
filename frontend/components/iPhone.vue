@@ -3,12 +3,13 @@
         <!-- <div >  
             <img class=" mockbg " src="/ipadmock.png" />
         </div> -->
+        
       <div class="status-bar"></div>
-     
+      <!-- <Notification /> -->
       <!-- <Time /> -->
 
       <div class="screen">
-        <Notification />
+      
         <div class="screen slider " ref="slider">
             <div class="swiper-wrapper">
               <!-- Slide 1 -->
@@ -88,7 +89,7 @@
   import AnalogClock from '@/components/AnalogClock.vue';
   import Time from '@/components/Time.vue';
   import CalendarWidget from '@/components/CalendarWidget.vue';
-  import Notification from '@//components/Notification.vue';
+  import Notification from '@/components/Notification.vue';
   import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.min.css';
 
@@ -330,7 +331,7 @@ import 'swiper/swiper-bundle.min.css';
     font-weight: normal;
 }
   .ipadbg {
-  background-image: url('~static/ipadbg.jpg'); /* Adjust the file name and path accordingly */
+  background-image: url('~static/ipadbg.jpeg'); /* Adjust the file name and path accordingly */
   background-size: cover; /* Adjust as needed */
   background-position: center; /* Adjust as needed */
   background-repeat: no-repeat; /* Adjust as needed */
@@ -364,6 +365,7 @@ import 'swiper/swiper-bundle.min.css';
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    align-content: center;
     /* border-radius: 32px; */
   }
   
