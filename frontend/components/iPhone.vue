@@ -5,7 +5,7 @@
         </div> -->
         
       <div class="status-bar"></div>
-      <!-- <Notification /> -->
+      <Notification />
       <!-- <Time /> -->
 
       <div class="screen">

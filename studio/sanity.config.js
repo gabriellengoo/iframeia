@@ -14,7 +14,7 @@ import {visionTool} from '@sanity/vision'
 function getPreviewUrl(doc) {
   const protocol = 'https://'; // Assuming your local server is running on HTTP, adjust if needed
   const host = 'megan-site.vercel.app'; // Adjust the port if your server is running on a different port
-  const path = doc?.slug?.current ? `/project/${doc.slug.current}` : '';
+  const path = doc?.slug?.current;
 
   return doc?.slug?.current
       ? `${protocol}${host}${path}?preview=true`
@@ -39,16 +39,6 @@ const defaultDocumentNode = (S, { schemaType }) => {
           })
           .title('Preview'),
       ]);
-      case 'project':
-        return S.document().views([
-          S.view.form(),
-          S.view
-            .component(Iframe)
-            .options({
-              url: (doc) => getPreviewUrl(doc),
-            })
-            .title('Preview'),
-        ]);
     default:
       return S.document().views([S.view.form()]);
   }

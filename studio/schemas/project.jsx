@@ -1,11 +1,11 @@
 import React from "react";
 import Emoji from "a11y-react-emoji";
-const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="✍️" />;
-const Links = () => <Emoji style={{ fontSize: "2rem" }} symbol="🔊" />;
+const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="" />;
+const Links = () => <Emoji style={{ fontSize: "2rem" }} symbol="" />;
 
 export default {
   name: "project",
-  title: "Poems",
+  title: "Old",
   type: "document",
   // liveEdit: true,
   icon: Project,
