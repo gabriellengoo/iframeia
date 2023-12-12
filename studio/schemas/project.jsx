@@ -1,11 +1,10 @@
 import React from "react";
 import Emoji from "a11y-react-emoji";
-const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="" />;
-const Links = () => <Emoji style={{ fontSize: "2rem" }} symbol="" />;
+const Project = () => <Emoji style={{ fontSize: "2rem" }} symbol="📷" />;
 
 export default {
   name: "project",
-  title: "Old",
+  title: "Photos",
   type: "document",
   // liveEdit: true,
   icon: Project,
@@ -16,24 +15,14 @@ export default {
       type: "string",
     },
     {
-      name: "year",
-      title: "Summery",
-      type: "string",
-    },
-    {
       name: "slug",
       title: "Slug",
       type: "slug",
       options: { source: "title" },
     },
     {
-      name: "shortBio",
-      title: "Poem text",
-      type: "blockContent",
-    },
-    {
       name: "slider",
-      title: "Images",
+      title: "Slider",
       type: "array",
       options: {
         layout: "grid",
@@ -65,17 +54,27 @@ export default {
                         (!value && parent?.spacer) || (!value && parent?.video),
                     },
                     {
+                      name: "imagedate",
+                      title: "Image Date",
+                      type: "string",
+                    },
+                    {
+                      name: "imagetime",
+                      title: "Image Time",
+                      type: "string",
+                    },
+                    {
                       name: "imageWidth",
                       title: "Image Width",
                       type: "number",
-                      description: "Set the width of the image in viewporth width",
+                      description: "Optional - Set the width of the image in viewporth width",
                       validation: (Rule) => Rule.min(0),
                     },
                     {
                       name: "overlayimageWidth",
                       title: "Overlay Image Width",
                       type: "number",
-                      description: "Set the width of the image in viewporth width",
+                      description: "Optional - Set the width of the image in viewporth width",
                       validation: (Rule) => Rule.min(0),
                     },
                     {
@@ -89,7 +88,7 @@ export default {
                       name: "thumbnailTime",
                       title: "Thumbnail Time",
                       type: "number",
-                      description: "Time in seconds for the selected thumbnail frame",
+                      description: "Optional - Time in seconds for the selected thumbnail frame",
                       validation: (Rule) => Rule.min(0),
                       // inputComponent: CustomThumbnailTimeInput,
                     },
@@ -164,35 +163,6 @@ export default {
               };
             },
           },
-        },
-      ],
-    },
-    {
-      name: "footer",
-      title: "Links",
-      type: "array",
-      of: [
-        {
-          name: "button",
-          title: "Button",
-          type: "object",
-          icon: Links,
-          fields: [
-            {
-              name: "title",
-              title: "Title",
-              type: "string",
-            },
-            {
-              name: "link",
-              title: "Link",
-              type: "url",
-              validation: (Rule) =>
-                Rule.uri({
-                  scheme: ["http", "https", "mailto", "tel"],
-                }),
-            },
-          ],
         },
       ],
     },

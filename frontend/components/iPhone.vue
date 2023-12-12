@@ -6,10 +6,17 @@
         
       <div class="status-bar"></div>
       <Notification />
+      <Notification2 />
+      <Notification3 />
       <!-- <Time /> -->
 
       <div class="screen">
-      
+        <div>
+    <!-- Your main component content goes here -->
+    <!-- <button @click="openPasscode">Open Passcode Modal</button> -->
+    <PasscodeInput v-if="isPasscodeVisible" @close="closePasscode" />
+  </div>
+
         <div class="screen slider " ref="slider">
             <div class="swiper-wrapper">
               <!-- Slide 1 -->
@@ -30,11 +37,13 @@
                           <!-- Two rows with 6 app icons each -->
                               <div class="grid2">
                                   <div v-for="(app, index) in apps2" :key="index" class="app">
-                                      <a :href="app.link">
+                                    <button @click="openPasscode">
+                                    <!-- <a :href="app.link"> -->
                                       <!-- Use the SVG content directly -->
                                       <div v-html="app.icon" class="app-icon"></div>
                                       <span class="app-label">{{ app.name }}</span>
-                                      </a>
+                                      <!-- </a> -->
+                                    </button>
                                   </div>
                               </div>
                             </div>
@@ -47,11 +56,13 @@
                               <div class="grid2">
                                 <!-- <div>easter egg app</div> -->
                               <div v-for="(app, index) in apps" :key="index" class="app">
-                                  <a :href="app.link">
+                                <button @click="openPasscode">
+                                <!-- <a :href="app.link"> -->
                                   <!-- Use the SVG content directly -->
                                   <div v-html="app.icon" class="app-icon"></div>
                                   <span class="app-label">{{ app.name }}</span>
-                                  </a>
+                                  <!-- </a> -->
+                                </button>
                               </div>
                               </div>
                             </div>
@@ -90,8 +101,11 @@
   import Time from '@/components/Time.vue';
   import CalendarWidget from '@/components/CalendarWidget.vue';
   import Notification from '@/components/Notification.vue';
+  import Notification2 from '@/components/Notification2.vue';
+  import Notification3 from '@/components/Notification3.vue';
   import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.min.css';
+import PasscodeInput from '@/components/PasscodeInput.vue';
 
   export default {
     components: {
@@ -99,11 +113,15 @@ import 'swiper/swiper-bundle.min.css';
     Time,
     CalendarWidget,
     Notification,
+    Notification2,
+    Notification3,
+    PasscodeInput,
     },
 
     data() {
     return {
-     
+      isPasscodeVisible: false,
+
         topRowImages: [
             require('~/static/homeimg.jpeg'), // Use require for local images
             // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
@@ -111,34 +129,34 @@ import 'swiper/swiper-bundle.min.css';
             ],
       apps: [
       {
-          name: 'FaceTime',
+          name: 'VoiceMemo',
           icon: '', // Leave it empty for now
           link: '/app1',
         },
         {
-          name: 'Files',
+          name: 'SoundCloud',
           icon: '', // Leave it empty for now
           link: '/app1',
         },
         {
-          name: 'Reminders',
-          icon: '', // Leave it empty for now
+          name: 'Mail',
+          icon: '',
           link: '/app1',
         },
         {
-          name: 'Home',
+          name: 'Notes',
           icon: '', // Leave it empty for now
-          link: './',
+          link: './notesapp',
         },
         {
-          name: 'Camera',
+          name: 'Instagram',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          link: 'https://www.instagram.com/ygmegs/',
         },
         {
-          name: 'App Store',
+          name: 'Photos',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          link: '/photogallery/photos',
         },
        
         ],
@@ -147,33 +165,24 @@ import 'swiper/swiper-bundle.min.css';
         {
           name: 'Books',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          // link: '/app1',
         },
         {
-          name: 'Notes',
+          name: 'Home',
           icon: '', // Leave it empty for now
-          link: '/notes',
+          // link: '/app1',
         },
         {
           name: 'Podcast',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          // link: '/app1',
         },
         {
-          name: 'Voice Memos',
+          name: 'FaceTime',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          // link: '/app1',
         },
-        {
-          name: 'Wallet',
-          icon: '', // Leave it empty for now
-          link: '/app1',
-        },
-        {
-          name: 'Settings',
-          icon: '', // Leave it empty for now
-          link: '/app1',
-        },
+       
         // Define your app objects here
         // '/facetime.svg',
         ],
@@ -182,46 +191,46 @@ import 'swiper/swiper-bundle.min.css';
   mounted() {
     this.initSwiper();
     // Fetch and set the SVG content dynamically for the 'FaceTime' app
-    this.fetchSVG('facetime.svg').then((svgContent) => {
+    this.fetchSVG('voicememo.svg').then((svgContent) => {
       this.$set(this.apps, 0, {
-        name: 'FaceTime',
+        name: 'VoiceMemo',
         icon: svgContent,
-        link: '/app1',
+        link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
       });
     });
-    this.fetchSVG('files.svg').then((svgContent) => {
+    this.fetchSVG('soundcloud2.svg').then((svgContent) => {
       this.$set(this.apps, 1, {
-        name: 'Files',
+        name: 'SoundCloud',
         icon: svgContent,
-        link: '/app1',
+        link: 'https://soundcloud.com/',
       });
     });
-    this.fetchSVG('reminder.svg').then((svgContent) => {
+    this.fetchSVG('mail.svg').then((svgContent) => {
       this.$set(this.apps, 2, {
-        name: 'Reminders',
+        name: 'Mail',
         icon: svgContent,
-        link: '/app1',
+        link: 'mailto:meganor1997@gmail.com',
       });
     });
-    this.fetchSVG('home.svg').then((svgContent) => {
+    this.fetchSVG('notes.svg').then((svgContent) => {
       this.$set(this.apps, 3, {
-        name: 'Home',
+        name: 'Notes',
         icon: svgContent,
-        link: './',
+        link: './notesapp',
       });
     });
-    this.fetchSVG('camera.svg').then((svgContent) => {
+    this.fetchSVG('instagram.svg').then((svgContent) => {
       this.$set(this.apps, 4, {
-        name: 'Camera',
+        name: 'Instagram',
         icon: svgContent,
-        link: '/app1',
+        link: 'https://www.instagram.com/ygmegs/',
       });
     });
-    this.fetchSVG('camera.svg').then((svgContent) => {
+    this.fetchSVG('photos.svg').then((svgContent) => {
       this.$set(this.apps, 5, {
-        name: 'App Store',
+        name: 'Photos',
         icon: svgContent,
-        link: '/app1',
+        link: '/photogallery/photos',
       });
     });
     // apps2
@@ -229,46 +238,38 @@ import 'swiper/swiper-bundle.min.css';
       this.$set(this.apps2, 0, {
         name: 'Books',
         icon: svgContent,
-        link: '/app1',
+        // link: '/passcode',
       });
     });
-    this.fetchSVG('notes.svg').then((svgContent) => {
+    this.fetchSVG('home.svg').then((svgContent) => {
       this.$set(this.apps2, 1, {
-        name: 'Notes',
+        name: 'Home',
         icon: svgContent,
-        link: '/notes',
+        // link: '/app1',
       });
     });
     this.fetchSVG('podcast.svg').then((svgContent) => {
       this.$set(this.apps2, 2, {
         name: 'Podcast',
         icon: svgContent,
-        link: '/app1',
+        // link: '/app1',
       });
     });
-    this.fetchSVG('voicememo.svg').then((svgContent) => {
+    this.fetchSVG('facetime.svg').then((svgContent) => {
       this.$set(this.apps2, 3, {
-        name: 'Voice Memos',
+        name: 'FaceTime',
         icon: svgContent,
-        link: '/app1',
-      });
-    });
-    this.fetchSVG('wallet.svg').then((svgContent) => {
-      this.$set(this.apps2, 4, {
-        name: 'Wallet',
-        icon: svgContent,
-        link: '/app1',
-      });
-    });
-    this.fetchSVG('settings.svg').then((svgContent) => {
-      this.$set(this.apps2, 5, {
-        name: 'Settings',
-        icon: svgContent,
-        link: '/app1',
+        // link: '/app1',
       });
     });
   },
   methods: {
+    openPasscode() {
+      this.isPasscodeVisible = true;
+    },
+    closePasscode() {
+      this.isPasscodeVisible = false;
+    },
       // Call this method to show the notification
       showCustomNotification() {
       this.$refs.notification.notificationText = "Custom Notification!";

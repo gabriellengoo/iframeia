@@ -12,7 +12,7 @@
           <!-- You can customize the content here, replace it with your text -->
           <div class="botnoti">
             <p class="font-bold">Web Dev ( The Internet Arcitect )</p>
-            <p class="font-light">Hey, Check your notes app !</p>
+            <p class="font-light">megan are you coming out tomorrow thou? 🤔 check photos if your not sure </p>
             <!-- Close button -->
           </div>
         </div>
@@ -38,9 +38,11 @@
     // Slide out the notification by setting a delay
     setTimeout(() => {
       this.$refs.notificationcont.style.top = '-100%';
-    }, 50); // Adjust the delay as needed
+// change here
+    }, 15000); // Adjust the delay as needed
   },
     },
+
     mounted() {
     // Show the notification automatically on mount
     setTimeout(() => {
@@ -50,12 +52,12 @@
       // Automatically close the notification after another delay
       setTimeout(() => {
         this.closeNotification();
-        // time out
+      // time out
       }, 10000); // Adjust the delay as needed
-        // time in
-    }, 5000);
-  },
-
+// change here
+      // time in
+    }, 30000);
+  }, 
   };
   </script>
   

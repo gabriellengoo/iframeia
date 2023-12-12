@@ -4,7 +4,7 @@
     <title>App Icon / Apple / Notes /@SVG</title>
     <desc>Created with Sketch.</desc>
     <defs>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-11">
             <stop stop-color="#FFDB4C" offset="0%"></stop>
             <stop stop-color="#FFCD02" offset="100%"></stop>
         </linearGradient>
@@ -19,7 +19,7 @@
             <feOffset dx="0" dy="17" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
             <feColorMatrix values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.1 0" type="matrix" in="shadowOffsetOuter1"></feColorMatrix>
         </filter>
-        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-66">
             <stop stop-color="#FFDB4C" offset="0%"></stop>
             <stop stop-color="#FFCD02" offset="100%"></stop>
         </linearGradient>
@@ -51,7 +51,7 @@
     <g id="App-Icon-/-Apple-/-Notes-/" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <rect id="Bottom" fill="#FFFFFF" x="0" y="299" width="1024" height="725"></rect>
         <g id="Top">
-            <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+            <use fill="url(#linearGradient-11)" fill-rule="evenodd" xlink:href="#path-2"></use>
             <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
         </g>
         <g id="Bottom" transform="translate(0.000000, 316.000000)">
@@ -65,7 +65,7 @@
         <g id="Top">
             <g>
                 <use fill="black" fill-opacity="1" filter="url(#filter-8)" xlink:href="#path-7"></use>
-                <use fill="url(#linearGradient-6)" fill-rule="evenodd" xlink:href="#path-7"></use>
+                <use fill="url(#linearGradient-66)" fill-rule="evenodd" xlink:href="#path-7"></use>
                 <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-7"></use>
             </g>
         </g>
