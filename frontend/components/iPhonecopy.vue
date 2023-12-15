@@ -109,15 +109,15 @@
   </template>
   
   <script>
-  import AnalogClock from '@/components/AnalogClock.vue';
+  // import AnalogClock from '@/components/AnalogClock.vue';
   import Time from '@/components/Time.vue';
-  import CalendarWidget from '@/components/CalendarWidget.vue';
+  // import CalendarWidget from '@/components/CalendarWidget.vue';
 
   export default {
     components: {
-    AnalogClock,
+    // AnalogClock,
     Time,
-    CalendarWidget,
+    // CalendarWidget,
     },
 
     data() {

@@ -100,9 +100,9 @@
   </template>
   
   <script>
-  import AnalogClock from '~/components/AnalogClock.vue';
+  // import AnalogClock from '~/components/AnalogClock.vue';
   import Time from '~/components/Time.vue';
-  import CalendarWidget from '~/components/CalendarWidget.vue';
+  // import CalendarWidget from '~/components/CalendarWidget.vue';
   import Notification from '~/components/Notification.vue';
   import Notification2 from '~/components/Notification2.vue';
   import Notification3 from '~/components/Notification3.vue';
@@ -115,9 +115,9 @@ import Marquee from '~/components/Marquee.vue';
 
   export default {
     components: {
-    AnalogClock,
+    // AnalogClock,
     Time,
-    CalendarWidget,
+    // CalendarWidget,
     Notification,
     Notification2,
     Notification3,
