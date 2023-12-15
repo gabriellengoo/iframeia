@@ -100,16 +100,16 @@
   </template>
   
   <script>
-  import AnalogClock from '@/components/AnalogClock.vue';
-  import Time from '@/components/Time.vue';
-  import CalendarWidget from '@/components/CalendarWidget.vue';
-  import Notification from '@/components/Notification.vue';
-  import Notification2 from '@/components/Notification2.vue';
-  import Notification3 from '@/components/Notification3.vue';
-  import Notification4 from '@/components/Notification4.vue';
+  import AnalogClock from '~/components/AnalogClock.vue';
+  import Time from '~/components/Time.vue';
+  import CalendarWidget from '~/components/CalendarWidget.vue';
+  import Notification from '~/components/Notification.vue';
+  import Notification2 from '~/components/Notification2.vue';
+  import Notification3 from '~/components/Notification3.vue';
+  import Notification4 from '~/components/Notification4.vue';
   import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.min.css';
-import PasscodeInput from '@/components/PasscodeInput.vue';
+import PasscodeInput from '~/components/PasscodeInput.vue';
 import Marquee from '~/components/Marquee.vue';
 
 
