@@ -119,6 +119,7 @@
 import { groq } from '@nuxtjs/sanity'
 import 'material-design-icons/iconfont/material-icons.css';
 import DrawingPad from '@/components/DrawingPad';
+import { mapMutations, mapState } from "vuex";
 
 export default {
   components: {
