@@ -108,13 +108,13 @@
   import Notification3 from '~/components/Notification3.vue';
   import Notification4 from '~/components/Notification4.vue';
   import Swiper from 'swiper/bundle';
-import 'swiper/swiper-bundle.min.css';
-import PasscodeInput from '~/components/PasscodeInput.vue';
-import Marquee from '~/components/Marquee.vue';
+  import 'swiper/swiper-bundle.min.css';
+  import PasscodeInput from '~/components/PasscodeInput.vue';
+  import Marquee from '~/components/Marquee.vue';
 
 
   export default {
-    components: {
+  components: {
     // AnalogClock,
     Time,
     // CalendarWidget,
@@ -126,7 +126,7 @@ import Marquee from '~/components/Marquee.vue';
     Marquee,
     },
 
-    data() {
+  data() {
     return {
       isPasscodeVisible: false,
 
@@ -139,17 +139,17 @@ import Marquee from '~/components/Marquee.vue';
       {
           name: 'VoiceMemo',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
         },
         {
           name: 'SoundCloud',
           icon: '', // Leave it empty for now
-          link: '/app1',
+          link: 'https://soundcloud.com/',
         },
         {
           name: 'Mail',
           icon: '',
-          link: '/app1',
+          link: 'mailto:meganor1997@gmail.com',
         },
         {
           name: 'Notes',
@@ -267,21 +267,21 @@ import Marquee from '~/components/Marquee.vue';
       this.$set(this.apps2, 1, {
         name: 'Home',
         icon: svgContent,
-        // link: '/app1',
+        link: '/app1',
       });
     });
     this.fetchSVG('podcast.svg').then((svgContent) => {
       this.$set(this.apps2, 2, {
         name: 'Podcast',
         icon: svgContent,
-        // link: '/app1',
+        link: '/app1',
       });
     });
     this.fetchSVG('facetime.svg').then((svgContent) => {
       this.$set(this.apps2, 3, {
         name: 'FaceTime',
         icon: svgContent,
-        // link: '/app1',
+        link: '/app1',
       });
     });
        // apps3
@@ -289,7 +289,7 @@ import Marquee from '~/components/Marquee.vue';
       this.$set(this.apps3, 0, {
         name: 'Books',
         icon: svgContent,
-        // link: '/passcode',
+        link: '/app1',
       });
     });
     this.fetchSVG('photos.svg').then((svgContent) => {
