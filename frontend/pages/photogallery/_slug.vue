@@ -27,9 +27,10 @@
         </h2>
       </div>
 
-
+<!--       class="top-0 left-0 hidden w-full md:block cursor-grab slider"
+ -->
       <section
-      class="top-0 left-0 hidden w-full md:block cursor-grab slider"
+      class="top-0 left-0 w-full block cursor-grab slider"
       v-swiper:mySwiper="swiperOptions"
       @slideChange="onSlideChange"
       ref="slider"
@@ -1191,9 +1192,22 @@ button {
     align-items: center;
   }
 
-  .block {
+  /* .block {
     display: none;
-  }
+  } */
+
+  .gallery-image {
+    width: inherit;
+}
+
+svg {
+    width: 5vw;
+}
+
+.overlaydiv{
+    padding: 0;
+    padding-top: 2vh;
+}
 
   .gallmobile {
     flex-direction: column;

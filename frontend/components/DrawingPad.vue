@@ -69,5 +69,12 @@ export default {
   align-items: center;
   justify-content: center;
 }
+
+@media (max-width: 768px) {
+.canvas-container {
+    justify-content: flex-end;
+}
+
+}
 /* Add any custom styles here */
 </style>

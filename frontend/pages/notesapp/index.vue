@@ -21,13 +21,13 @@
 
 
         <footer class="Post-footer">
-          <a href="" target="_blank" rel="noopener noreferrer">Website built by The Internet Arcitect</a>
+          <a href="https://www.instagram.com/is_this_gabrielle/" target="_blank" rel="noopener noreferrer">Website built by The Internet Arcitect</a>
         </footer>
         <!-- Add content for the left column here -->
       </div>
 
       <!-- Right Column -->
-      <div class="right-column h-screen overflow-y-scroll overflow-x-hidden">
+      <div class="right-column h-screen overflow-y-scroll overflow-x-hidden" :class="{ 'slide-in': isRightColumnVisible }">
         <h2 class="columnr-header fixed w-[-webkit-fill-available]">
           <div class="z-60 flex justify-between font-base pt-5 pl-2 pr-2 text-[#e5af08]">
             <button type="button" class="flex items-center font-light">
@@ -45,7 +45,9 @@
                   </g>
                 </svg>
               </a>
-              <DrawingPad />
+              <button @click="closeRightColumn" class="close-button "><SvgBack></SvgBack></button>
+              <div class="pl-[1vw]"><DrawingPad /></div>
+              
             </button>
             
             <div class="hover:text-[#d0d0d0] mix-blend-multiply cursor-pointer">
@@ -68,7 +70,7 @@
               <div>{{ selectedArtist.title }}</div>
               <div class="pb-5 font-light text-2xl text-[#787878]">{{ selectedArtist.subtitle }}</div>
             </div>
-            <div class="pt-5 pl-5 pr-2 text-2xl text-[#383838] w-6/12">
+            <div class="pt-5 pl-5 pr-2 text-2xl text-[#383838] w-6/12 mobilepoemtext">
               <div class="flex-1" v-for="section in selectedArtist.sections" :key="section._key">
                
                 
@@ -93,7 +95,7 @@
         <!-- Default content when no artist is selected -->
         <div v-else>
           
-          <div class="pt-20">
+          <div class="mobilenone pt-20">
             <div class="pt-5 pl-5 pr-2 text-3xl text-[#383838] font-semibold">
               <div>Welcome</div>                
             </div>
@@ -125,12 +127,17 @@ export default {
   data() {
     return {
       selectedArtist: null,
+    isRightColumnVisible: false,
     };
   },
   methods: {
     selectArtist(artist) {
-      this.selectedArtist = artist;
-    },
+    this.selectedArtist = artist;
+    this.isRightColumnVisible = true; // Show the right column
+  },
+  closeRightColumn() {
+    this.isRightColumnVisible = false; // Hide the right column
+  },
   },
   async asyncData({ params, $sanity }) {
     // const artistsQuery = groq`*[_type == "talent" && hidden != true && !(_id in path("drafts.**"))] {..., "project" : leadProject->slug.current} | order(_updatedAt desc)`
@@ -235,6 +242,52 @@ export default {
   padding-right: 0.5vw;
 }
 
+.close-button {
+  display: none;
+}
 
-@media (max-width: 768px) {}
+
+@media (max-width: 768px) {
+  .right-column {
+  /* ... existing styles ... */
+
+  transition: transform 0.5s ease; /* Add a transition for the 'transform' property */
+  transform: translateX(-100%); /* Start with the right column off-screen to the left */
+}
+
+.slide-in {
+  transform: translateX(0); /* Slide in the right column */
+}
+  .right-column{
+    /* display: none; */
+    position: absolute;
+    top: 0;
+    padding: 0px;
+    width: 100vw;
+}
+
+.close-button {
+  /* position: absolute; */
+  display: contents;
+  top: 10px;
+  right: 10px;
+  background-color: #ffffff;
+  border: 1px solid #e5af08;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.mobilepoemtext{
+  width: 100%;
+}
+
+.mobilenone{
+  display: none;
+}
+
+.two-column-container {
+    display: contents;
+    height: 100vh;
+}
+}
 </style>

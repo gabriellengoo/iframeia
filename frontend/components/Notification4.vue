@@ -1,7 +1,7 @@
 <template>
-       <div class="notificationcont" :class="{ 'slide-in': isVisible }">
+    <div class="notificationcont" :class="{ 'slide-in': isVisible }">
       <button @click="closeNotification">
-        <div  v-if="isVisible" class="notification">
+        <div v-if="isVisible" class="notification">
 
           <div class="botnoti">
             <div class="flex items-center">
@@ -11,18 +11,11 @@
                   Web Dev ( Internet Arcitect )
                   <p class="pl-2 font-light text-[grey]">now</p>
                 </div>
-                <div class="flex flex-row items-start justify-between">
-                  <p class="font-light">and soundcloud ngl fireeee</p>
-                  <!-- <img  class=" wink " src="/wink.gif"/> -->
-                  <img  class=" cat " src="/cat.gif"/>
-                </div>
-                <!-- <p class="font-light">and soundcloud ngl fireeee</p> -->
+                <p class="font-light"> ngl i dropped your phone yesterday and now some apps are gliching to lock screen...soz yh 😬 </p>
               </div>
             </div>
           </div>
 
-
-       
         </div>
       </button>
     </div>
@@ -47,7 +40,7 @@
     setTimeout(() => {
       this.$refs.notificationcont.style.top = '-100%';
 // change here
-    }, 10000); // Adjust the delay as needed
+    }, 15000); // Adjust the delay as needed
   },
     },
 
@@ -64,8 +57,8 @@
       }, 10000); // Adjust the delay as needed
 // change here
       // time in
-    }, 20000);
-  },
+    }, 40000);
+  }, 
   };
   </script>
   

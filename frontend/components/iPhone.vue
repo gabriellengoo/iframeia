@@ -8,7 +8,10 @@
       <Notification />
       <Notification2 />
       <Notification3 />
+      <Notification4 />
       <!-- <Time /> -->
+
+      <Marquee />
 
       <div class="screen">
         <div>
@@ -20,11 +23,11 @@
         <div class="screen slider " ref="slider">
             <div class="swiper-wrapper">
               <!-- Slide 1 -->
-              <div class="swiper-slide p-10">
+              <div class="swiper-slide mobilegrid w-[100vw] p-10 flex justify-center">
                         <!-- top grid all -->
                         <div class="">
                           <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
+                              <div class="grid2 w-[100vw]">
                               <div v-for="(app, index) in apps" :key="index" class="app">
                                   <a :href="app.link">
                                   <!-- Use the SVG content directly -->
@@ -35,7 +38,7 @@
                               </div>
 
                           <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
+                              <div class="grid2 w-[100vw]">
                                   <div v-for="(app, index) in apps2" :key="index" class="app">
                                     <button @click="openPasscode">
                                     <!-- <a :href="app.link"> -->
@@ -50,12 +53,12 @@
               </div>
 
               <!-- Slide 2 -->
-              <div class="swiper-slide p-10">
+              <div class="swiper-slide mobilegrid3mb w-[100vw] flex justify-center p-10">
                 <div class="">
                           <!-- Two rows with 6 app icons each -->
-                              <div class="grid2">
+                              <div class="grid3">
                                 <!-- <div>easter egg app</div> -->
-                              <div v-for="(app, index) in apps" :key="index" class="app">
+                              <div v-for="(app, index) in apps3" :key="index" class="app">
                                 <button @click="openPasscode">
                                 <!-- <a :href="app.link"> -->
                                   <!-- Use the SVG content directly -->
@@ -103,9 +106,12 @@
   import Notification from '@/components/Notification.vue';
   import Notification2 from '@/components/Notification2.vue';
   import Notification3 from '@/components/Notification3.vue';
+  import Notification4 from '@/components/Notification4.vue';
   import Swiper from 'swiper/bundle';
 import 'swiper/swiper-bundle.min.css';
 import PasscodeInput from '@/components/PasscodeInput.vue';
+import Marquee from '~/components/Marquee.vue';
+
 
   export default {
     components: {
@@ -115,7 +121,9 @@ import PasscodeInput from '@/components/PasscodeInput.vue';
     Notification,
     Notification2,
     Notification3,
+    Notification4,
     PasscodeInput,
+    Marquee,
     },
 
     data() {
@@ -185,6 +193,20 @@ import PasscodeInput from '@/components/PasscodeInput.vue';
        
         // Define your app objects here
         // '/facetime.svg',
+        ],
+              // rowtwo
+              apps3: [
+        {
+          name: 'Books',
+          icon: '', // Leave it empty for now
+          // link: '/app1',
+        },
+        {
+          name: 'Photos',
+          icon: '', // Leave it empty for now
+          link: '/photogallery/photos',
+        },
+     
         ],
     };
   },
@@ -260,6 +282,21 @@ import PasscodeInput from '@/components/PasscodeInput.vue';
         name: 'FaceTime',
         icon: svgContent,
         // link: '/app1',
+      });
+    });
+       // apps3
+       this.fetchSVG('books.svg').then((svgContent) => {
+      this.$set(this.apps3, 0, {
+        name: 'Books',
+        icon: svgContent,
+        // link: '/passcode',
+      });
+    });
+    this.fetchSVG('photos.svg').then((svgContent) => {
+      this.$set(this.apps3, 1, {
+        name: 'Photos',
+        icon: svgContent,
+        link: '/photogallery/photos',
       });
     });
   },
@@ -552,5 +589,44 @@ import PasscodeInput from '@/components/PasscodeInput.vue';
     color: #fcfcfc;
     justify-content: center;
 }
+
+.grid3 {
+    flex-direction: row;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+@media (max-width: 768px) {
+  .grid2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% !important;
+}
+
+.grid3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100% !important;
+    /* flex-direction: row;
+    display: flex;
+    flex-wrap: wrap; */
+}
+
+.mobilegrid3mb{
+  display: flex;
+  width: 100% !important;
+  justify-content: flex-start;
+}
+
+.mobilegrid{
+  display: flex;
+  width: 100% !important;
+}
+
+}
+
   </style>
   

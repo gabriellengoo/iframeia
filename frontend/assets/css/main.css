@@ -60,7 +60,158 @@ html {
 }
 
 
+.topnoti {
+  /* filter: drop-shadow(3px 2px 2px black); */
+  width: inherit;
+  background: #ffffff85;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  /* border-bottom: 1.5px solid rgb(210 205 205 / 53%); */
+  padding: 8px 16px;
+  display: flex;
+  justify-content: space-between;
+}
 
-@media (min-width: 768px) {
+.botnoti {
+  padding: 3px 33px;
+}
+.notificationcont {
+position: fixed;
+top: -100%;
+left: 0;
+width: 100%;
+display: flex;
+padding: 10px;
+text-align: center;
+z-index: 1000000;
+color: #2a2a2a;
+transition: top 1s ease; /* Add a transition for smooth sliding */
+justify-content: center;
+}
+
+.notificationcont.slide-in {
+top: 0;
+}
+
+.notification {
+width: 40vw;
+border-radius: 10px;
+backdrop-filter: blur(1px);
+text-align: left;
+background-color: rgb(255 255 255 / 75%);
+transition: top 1s ease; /* Change to top for sliding effect */
+}
+
+/* Add more styles for your notification content, e.g., p and button */
+.notification p {
+margin: 0;
+font-size: 13px;
+/* font-weight: bold; */
+}
+
+.mobileonly{
+  display: none !important;
+}
+.deskonly{
+  display: contents !important;
+}
+
+.topline {
+  width: -webkit-fill-available;
+}
+
+.notification {
+    border-radius: 25px;
+    border-radius: 36px;
+    -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
+    background-color: rgb(255 255 255 / 28%);
+    transition: top 1s ease;
+}
+.toplinein{
+  display: flex;
+  font-size: 13px;
+    justify-content: space-between;
+    width: -webkit-fill-available;
+}
+
+.cat{
+  width: 15% ;
+}
+
+.wink{
+  width: 10%;
+}
+
+
+@keyframes marquee {
+  0% {
+    transform: translateX(10%);
+  }
+  50% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(10%);
+  }
+}
+
+
+@media (max-width: 768px) {
+.cat{
+  width: 25% !important;
+}
+
+.wink{
+  width: 15% !important;
+}
+
+  .marquee {
+    width: 100vw !important;
+}
+
+  .content {
+    display: flex;
+    animation: marquee 18s linear infinite !important; /* Adjust the duration as needed */
+  }
+
+  .activeapps{
+    padding: 2vw;
+}
  
+  .botnoti {
+    padding: 8px 16px;
+  }
+
+  .notification {
+    width: 90vw;
+    }
+
+    .topnoti {
+      display: none;
+    }
+    
+    .notification p {
+      margin: 0;
+      font-size: 12.5px;
+    }
+
+    .toplinein{
+      display: flex;
+      font-size: 12.5px;
+        justify-content: space-between;
+        width: -webkit-fill-available;
+    }
+
+    .notification {
+      border-radius: 25px;
+  }
+
+    .mobileonly{
+      display: contents !important;
+    }
+
+    .deskonly{
+      display: none !important;
+    }
 }

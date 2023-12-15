@@ -1,20 +1,25 @@
 <template>
     <div class="notificationcont" :class="{ 'slide-in': isVisible }">
       <button @click="closeNotification">
-        <div v-if="isVisible" class="notification">
-          <div class="topnoti font-light flex items-center">
-            <div class="flex items-center">
-              <SvgMessages></SvgMessages>
-              <p class="pl-2">Messages</p>
-            </div>
-            <div><p class="pl-2">now</p></div>
-          </div>
-          <!-- You can customize the content here, replace it with your text -->
+        <div  v-if="isVisible" class="notification">
+
           <div class="botnoti">
-            <p class="font-bold">Web Dev ( The Internet Arcitect )</p>
-            <p class="font-light">megan are you coming out tomorrow thou? 🤔 check photos if your not sure </p>
-            <!-- Close button -->
+            <div class="flex items-center">
+              <ProfilePicture />
+              <div class="topline">
+                <div class="font-bold toplinein">
+                  Web Dev ( Internet Arcitect )
+                  <p class="pl-2 font-light text-[grey]">now</p>
+                </div>
+                <div class="flex flex-row items-start justify-between">
+                  <p class="font-light">megan are we raveing tommorow thou? 🤔 check photos if your not sure </p>
+                  <!-- <img  class=" cat " src="/cat.gif"/> -->
+                  <img  class=" wink " src="/wink.gif"/>
+                </div>
+              </div>
+            </div>
           </div>
+
         </div>
       </button>
     </div>
@@ -62,53 +67,6 @@
   </script>
   
   <style scoped>
-  .topnoti {
-    /* filter: drop-shadow(3px 2px 2px black); */
-    width: inherit;
-    background: #ffffff85;
-    border-top-right-radius: 10px;
-    border-top-left-radius: 10px;
-    /* border-bottom: 1.5px solid rgb(210 205 205 / 53%); */
-    padding: 8px 16px;
-    display: flex;
-    justify-content: space-between;
-  }
-  
-  .botnoti {
-    padding: 8px 16px;
-  }
-  .notificationcont {
-  position: fixed;
-  top: -100%; /* Start off-screen */
-  left: 0;
-  width: 100%;
-  display: flex;
-  padding: 10px;
-  text-align: center;
-  z-index: 1000000;
-  color: #2a2a2a;
-  transition: top 0.5s ease; /* Add a transition for smooth sliding */
-  justify-content: center;
-}
 
-.notificationcont.slide-in {
-  top: 0;
-}
-
-.notification {
-  width: 40vw;
-  border-radius: 10px;
-  backdrop-filter: blur(1px);
-  text-align: left;
-  background-color: rgb(255 255 255 / 75%);
-  transition: top 0.5s ease; /* Change to top for sliding effect */
-}
-
-/* Add more styles for your notification content, e.g., p and button */
-.notification p {
-  margin: 0;
-  font-size: 13px;
-  /* font-weight: bold; */
-}
-  </style>
+</style>
   
