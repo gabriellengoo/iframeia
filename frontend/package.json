@@ -10,7 +10,8 @@
     "generate": "nuxt generate"
   },
   "engines": {
-    "node": "16.x"
+    "node": "16.x",
+    "vercel": "32.6.1"
   },
   "dependencies": {
     "@mux/blurhash": "^0.1.2",
