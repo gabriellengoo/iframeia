@@ -130,11 +130,11 @@ import Marquee from '~/components/Marquee.vue';
     return {
       isPasscodeVisible: false,
 
-        topRowImages: [
-            require('~/static/homeimg.jpeg'), // Use require for local images
-            // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
-            // '/path/to/image3.jpg', // Remove this line if there's no specific image at that location
-            ],
+        // topRowImages: [
+        //     require('~/static/homeimg.jpeg'), // Use require for local images
+        //     // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
+        //     // '/path/to/image3.jpg', // Remove this line if there's no specific image at that location
+        //     ],
       apps: [
       {
           name: 'VoiceMemo',
