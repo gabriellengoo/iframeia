@@ -5,17 +5,17 @@
     <div class="two-column-container overflow-y-hidden">
       <!-- Left Column -->
       <div class="left-column h-screen overflow-y-hidden">
-        <h2 class="column-title">Notes</h2>
+        <h2 class="column-title">Poems</h2>
 
 
         <div v-for="artist in artists" :key="artist._id" class="poemslist">
           <h1 @click="selectArtist(artist)" class="poemstitles">
             {{ artist.title }}
             <p class="poemssubtext">
-              <span class="time">08:24</span>
+              <span class="time">{{ artist.time }}</span>
               {{ artist.subtitle }}
             </p>
-          </h1>
+          </h1> 
         </div>
 
 

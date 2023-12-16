@@ -5,12 +5,12 @@
         </div> -->
 
     <div class="status-bar"></div>
-    <!-- <Notification />
+    <Notification />
     <Notification2 />
     <Notification3 />
-    <Notification4 /> -->
+    <Notification4 />
 
-    <!-- <Marquee /> -->
+    <Marquee />
 
     <div class="screen">
       <div>
@@ -307,13 +307,14 @@ export default {
       this.$refs.notification.notificationText = "Custom Notification!";
       this.$refs.notification.showNotification();
     },
-    fetchSVG(url) {
-      return fetch(url)
-        .then((response) => response.text())
-        .catch((error) => {
-          console.error("Error fetching SVG:", error);
-          return ""; // Return an empty string if there's an error
-        });
+    async fetchSVG(url) {
+      try {
+const response = await fetch(url);
+return await response.text();
+} catch (error) {
+console.error("Error fetching SVG:", error);
+return "";
+}
     },
     initSwiper() {
       // Initialize Swiper with options
