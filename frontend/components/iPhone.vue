@@ -32,7 +32,12 @@
                 <div v-for="(app, index) in apps" :key="index" class="app">
                   <a :href="app.link">
                     <!-- Use the SVG content directly -->
-                    <div v-html="app.icon" class="app-icon"></div>
+                    <img :src="app.icon" class="app-icon" />
+                    <!-- <MediaImage
+                          :src="app.icon"
+                          class="app-icon"
+                        ></MediaImage> -->
+                    <!-- <div :href="app.icon" class="app-icon"></div> -->
                     <span class="app-label">{{ app.name }}</span>
                   </a>
                 </div>
@@ -114,7 +119,7 @@ import "swiper/swiper-bundle.min.css";
 import PasscodeInput from "~/components/PasscodeInput.vue";
 import Marquee from "~/components/Marquee.vue";
 import { mapMutations, mapState } from "vuex";
-import voicememo from "~/static/voicememo.svg";
+// import voicememo from "/static/voicememo.svg";
 
 export default {
   components: {
@@ -136,7 +141,7 @@ export default {
       apps: [
       {
         name: "VoiceMemo",
-        icon: voicememo,
+        icon: "https://i.ibb.co/2yqn1wM/image.png",
         link: "https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1",
       },
         {
@@ -209,13 +214,20 @@ export default {
   mounted() {
     this.initSwiper();
     // Fetch and set the SVG content dynamically for the 'FaceTime' app
-    this.fetchSVG("voicememo.svg").then((svgContent) => {
+    // this.fetchSVG("voicememo.svg").then((svgContent) => {
+    //   this.$set(this.apps, 0, {
+    //     name: "VoiceMemo",
+    //     icon: svgContent,
+    //     link: "https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1",
+    //   });
+    // });
+     // this.fetchSVG("voicememo.svg").then((svgContent) => {
       this.$set(this.apps, 0, {
         name: "VoiceMemo",
-        icon: svgContent,
+        icon: "https://i.ibb.co/2yqn1wM/image.png",
         link: "https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1",
       });
-    });
+    // });
     this.fetchSVG("soundcloud2.svg").then((svgContent) => {
       this.$set(this.apps, 1, {
         name: "SoundCloud",
