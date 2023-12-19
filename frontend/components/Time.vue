@@ -5,7 +5,7 @@
       <div class="battside">  
         <div class="battery-icon">
           <div class="pl-1"><SvgWifi></SvgWifi></div>
-          <div class="pl-1"> 100% </div>
+          <div class="pl-1"> 97% </div>
           <div class="pl-1"><SvgBattery></SvgBattery></div>
         </div>
       </div>
