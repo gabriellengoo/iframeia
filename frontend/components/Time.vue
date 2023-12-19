@@ -1,11 +1,11 @@
 <template>
   <div class="ios-header">
     <div class="status-bar">
-      <div class="time">{{ currentTime }}<div class="date">{{ currentDate }}</div>💗</div>
+      <div class="time">{{ currentTime }}<div class="date">{{ currentDate }}</div></div>
       <div class="battside">  
         <div class="battery-icon">
           <div class="pl-1"><SvgWifi></SvgWifi></div>
-          <div class="pl-1"> 97% </div>
+          <div class="pl-1"> 100% </div>
           <div class="pl-1"><SvgBattery></SvgBattery></div>
         </div>
       </div>
