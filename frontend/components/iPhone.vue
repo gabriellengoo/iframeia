@@ -9,7 +9,7 @@
     <Notification2 />
     <Notification3 />
     <Notification4 />
-    <!-- <Time /> -->
+    <Time />
 
     <Marquee />
 

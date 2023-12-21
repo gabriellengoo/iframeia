@@ -1,6 +1,6 @@
 <template>
   <div class="">
-
+    <Time />
 
     <div class="two-column-container overflow-y-hidden">
       <!-- Left Column -->
@@ -131,6 +131,7 @@
 </template>
 <script>
 import { groq } from '@nuxtjs/sanity'
+import Time from '@/components/Time.vue';
 // import 'material-design-icons/iconfont/material-icons.css';
 import DrawingPad from '@/components/DrawingPad';
 import { mapMutations, mapState } from "vuex";
@@ -138,6 +139,7 @@ import { mapMutations, mapState } from "vuex";
 export default {
   components: {
     DrawingPad,
+    Time,
   },
   data() {
     return {

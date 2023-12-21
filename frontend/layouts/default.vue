@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-full">
     <!-- <TransitionComponent /> -->
-    <Time />
+    <!-- <Time /> -->
     <!-- <Notification /> -->
     <Nuxt />
     <LayoutFooter

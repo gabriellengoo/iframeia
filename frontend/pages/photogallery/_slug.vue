@@ -1,7 +1,7 @@
 <template>
   <!-- md:h-screen -->
   <div class=" relative ">
-
+    <Time />
      <!-- header -->
      <div class=" ">
       <h2 class=" left-column columnr-header pt-10 fixed w-[-webkit-fill-available]">
@@ -95,6 +95,7 @@
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
+import Time from '@/components/Time.vue';
 // import Header from "~/components/layout/Header.vue";
 // import About from "~/components/Aboutpage.vue";
 // import Lenis from '@studio-freight/lenis';
@@ -104,6 +105,7 @@ import { mapMutations, mapState } from "vuex";
 export default {
   components: {
     // Headerproject,
+    Time,
   },
   async asyncData({ params, $sanity, store }) {
     const query = groq`*[_type == "project" && slug.current == "${params.slug}" ] {
