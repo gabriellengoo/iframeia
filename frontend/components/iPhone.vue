@@ -624,8 +624,18 @@ justify-content: flex-start;
 .mobilegrid{
 display: flex;
 width: 100% !important;
+padding: 4.5rem;
 }
 
 }
+
+@media (max-width: 320px) {
+  .mobilegrid{
+display: flex;
+width: 100% !important;
+padding: 2.5rem;
+}
+}
+
 
 </style>
