@@ -2,15 +2,15 @@
   <!-- <Tutorial/> -->
 
   <div>
-    <div class="deskonly nomobile">
-      <!-- <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a> -->
+    <!-- <div class="deskonly nomobile">
+      <a v-if="showLink" class="homelink deskonly" href="/home">[ Enter ]</a>
       <iframe
         src="https://healthy-broadleaf-quark.glitch.me/"
         width="100%"
         height="600px"
         frameborder="0"
       ></iframe>
-    </div>
+    </div> -->
 
     <div class="mobileonly nodesktop">
       <iPhone /> 
