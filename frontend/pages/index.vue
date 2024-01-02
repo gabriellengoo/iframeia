@@ -3,7 +3,7 @@
 
   <div>
     <div class="deskonly nomobile">
-      <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a>
+      <!-- <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a> -->
       <iframe
         src="https://healthy-broadleaf-quark.glitch.me/"
         width="100%"
