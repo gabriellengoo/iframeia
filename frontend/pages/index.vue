@@ -1,15 +1,30 @@
 <template>
   <!-- <Tutorial/> -->
+
   <div>
-    <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a>
-    <iframe src="https://healthy-broadleaf-quark.glitch.me/" width="100%" height="600px" frameborder="0"></iframe>
+    <div class="deskonly nomobile">
+      <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a>
+      <iframe
+        src="https://healthy-broadleaf-quark.glitch.me/"
+        width="100%"
+        height="600px"
+        frameborder="0"
+      ></iframe>
+    </div>
+
+    <div class="mobileonly nodesktop">
+      <iPhone /> 
+    </div>
   </div>
+
   <!-- <iPhone /> -->
 </template>
- 
+
 <script>
+import iPhone from '~/components/iPhone.vue';
+
 export default {
-  name: 'IndexPage',
+  name: "IndexPage",
   data() {
     return {
       showLink: false,
@@ -20,6 +35,9 @@ export default {
     setTimeout(() => {
       this.showLink = true;
     }, 10000);
+  },
+  components: {
+    iPhone,
   },
 };
 </script>

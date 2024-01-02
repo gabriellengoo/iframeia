@@ -1,101 +1,104 @@
 <template>
-  <!-- md:h-screen -->
-  <div class=" relative ">
+  <!-- md:h-screen bg-black -->
+  <div class=" bg-black relative ">
     <Time />
      <!-- header -->
      <div class=" ">
       <h2 class=" left-column columnr-header pt-10 fixed w-[-webkit-fill-available]">
-          <div class="z-60 flex justify-between text-2xl pt-5 pl-2 pr-2 pb-5 text-[#086be5]">
-            <button type="button" class="hombtn flex items-center font-light">
-              <a href="../../home" class="hover:text-[#d0d0d0] pr-2  fill-[#086be5] mix-blend-multiply cursor-pointer">
+          <div class="z-60 flex justify-between text-2xl pt-5 pl-10 pr-10 pb-0 text-[#ffffff]">
+            <button type="button" class="hombtn flex flex-col items-center font-base">
+              <a href="../../home" class="hover:text-[#d0d0d0] pr-2 flex  fill-[#ffffff] mix-blend-multiply cursor-pointer">
                 <!-- <span class="material-icons"><svg xmlns="http://www.w3.org/2000/svg" height="14" viewBox="0 0 24 24" width="14"><path d="M0 0h24v24H0z" fill="none"/><path d="M11.67 3.87L9.9 2.1 0 12l9.9 9.9 1.77-1.77L3.54 12z"/></svg></span>  -->
-                Home
+                <SvgBack></SvgBack>Back
               </a>
             </button>
-            
+          
            
 
-            <div class="hover:text-[#d0d0d0] mix-blend-multiply cursor-pointer">
-              <span class="material-symbols-outlined fill-[#086be5]"><svg xmlns="http://www.w3.org/2000/svg" height="24"
-                  viewBox="0 0 24 24" width="24">
-                  <path d="M0 0h24v24H0z" fill="none" />
-                  <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z" />
-                </svg></span>
+            <div class="hover:text-[#d0d0d0] mix-blend-multiply text-xl font-bold cursor-pointer rounded-2xl bg-[#333333b8]">
+              <h1 class="p-1 pl-3 pr-3">Select</h1>
             </div>
+            <!-- <div class="hover:text-[#d0d0d0] mix-blend-multiply text-xl font-bold cursor-pointer rounded-2xl bg-[#333333b8]">
+              <h1 class="p-1 pl-3 pr-3">...</h1>
+            </div> -->
+
           </div>
+
+          <h2 class="p-2 pt-5 pl-10 text-[#ffffff] font-bold text-3xl">
+       Recents </h2>
         </h2>
+    
       </div>
 
-<!--       class="top-0 left-0 hidden w-full md:block cursor-grab slider"
- -->
-      <section
-      class="top-0 left-0 w-full block cursor-grab slider"
-      v-swiper:mySwiper="swiperOptions"
-      @slideChange="onSlideChange"
-      ref="slider"
-    >
+   
+     
 
-    
-      <div class="relative z-40 w-full h-full swiper-wrapper">
-        <div
-          v-for="(slide, index) in project.slider"
-          :key="slide._key"
-          class="overlaycont flex justify-center items-center w-full h-full transition-opacity duration-300 swiper-slide"
-          :class="{ 'opacity-95': realIndex == 0 }"
-        >
-          <div class="overlaycont">
+<!-- justify-center -->
+<section class="flex flex-wrap justify-between w-screen pb-36 ">
+  <div class="imgsize" v-for="(slide, index) in project.slider">
             <figure
               v-for="image in slide.images"
               :key="image._key"
-              class="overlaydiv"
-              :class="{
-                'p-12 pr-10': image.padding === 'medium',
-                'p-20 pr-18': image.padding === 'large',
-                'p-8 pr-6': !image.padding,
-              }"
+              class="imgsize p-[.1vw]"
             >
-            <div  v-if="image.imagedate" class="pt-[0vh] text-2xl flex flex-col items-center text-[#1e1e1e]">
+            <!-- <div  v-if="image.imagedate" class=" text-[#1e1e1e]">
                 {{ image.imagedate }} 
                 <span class="text-base">{{ image.imagetime }}</span>
-              </div>
+              </div> -->
                         <MediaImage
                           :src="image.image.asset._ref"
                           v-if="image.image"
-                          class="gallery-image w-auto h-full"
-                          :class="
-                            image.padding
-                              ? 'object-contain'
-                              : 'object-contain max-w-full'
-                          "
-                          :style="{ pointerEvents: 'auto' , width: `calc(${image.overlayimageWidth}vw - 20px)` }"
-                          :sizes="'sm:200vw md:150vw lg:200vw'"
+                          class=" object-cover "
+                
+                      
                         ></MediaImage>
                         <MediaVideo
                           :id="image.video.id"
                           :active="realIndex == index ? true : false"
                           v-else-if="image.video.id"
                           :poster="`https://image.mux.com/${image.video.id}/thumbnail.jpg?time=${image.thumbnailTime || 0}`"
-                          :style="{ pointerEvents: 'auto' , width: `calc(${image.overlayimageWidth}vw - 20px)` }"
+                     
                           @click="handleVideoClick(image.video.id)"
                        
-                          class="gallery-image relative object-cover object-center z-[10000000] w-full h-auto p-4 my-auto"
+                          class=" "
                         ></MediaVideo>
                  
                       </figure>
   
                      
                     </div>
-                  </div>
-                </div>
-            
-              </section>
+</section>
+
+
+<div class="activeappscont">
+      <div class="activeapps">
+        <span class="boticons fill-[#d2d2d26e]">
+          <SvgPhotogal></SvgPhotogal>
+          <h1>Libary</h1>
+        </span>
+        <span class="boticons fill-[#d2d2d26e]">
+          <SvgForyou></SvgForyou>
+          <h1>For You</h1>
+        </span>
+        <span class="boticons fill-[#008cff]">
+          <SvgAlbums></SvgAlbums>
+          <h1 class=" text-[#008cff]">Albums</h1>
+        </span>
+        <span class="boticons fill-[#d2d2d26e]">
+          <SvgSearch></SvgSearch>
+          <h1>Search</h1>
+        </span>
+      </div>
+</div>
+
+
+     
   </div>
 </template>
 <script>
 import { groq } from "@nuxtjs/sanity";
 import { mapMutations, mapState } from "vuex";
-import Time from '@/components/Time.vue';
+import Time from '@/components/Timev2.vue';
 // import Header from "~/components/layout/Header.vue";
 // import About from "~/components/Aboutpage.vue";
 // import Lenis from '@studio-freight/lenis';
@@ -320,13 +323,60 @@ export default {
 </script>
 
 <style scoped>
+
+.imgsize{
+    height: calc(41vh - 10px);
+    width: 359px;
+}
+
+.activeappscont{
+  justify-content: center;
+  display: flex;
+  background-color: #333333b8;
+  backdrop-filter: blur(10px);
+  width: 100vw;
+  position: fixed;
+    bottom: 0;
+    height: 15vh;
+    border-radius: 5px;
+}
+
+.activeapps{
+  display: flex;
+    width: -moz-fit-content;
+    width: fit-content;
+    border-radius: 32px;
+    color: rgba(210,210,210,0.61569);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: center;
+    justify-content: center;
+    /* align-items: center; */
+    align-items: flex-start;
+}
+
+.boticons{
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.5vw;
+    width: 20vw;
+}
+
+
 .left-column {
-  background-color: #f2f2f7;
+  /* background-color: #f2f2f7;
   background-color: #ffffff;
   border-bottom: 1.5px solid rgb(210 205 205 / 53%);
   filter: drop-shadow(0 5px 5px rgba(0, 0, 0,.1));
   z-index: 100 !important;
-  position: relative;
+  position: relative; */
+
+      /* background-color: #f2f2f7; */
+    /* background-color: #ffffff; */
+    /* border-bottom: 1.5px solid rgba(210, 205, 205, 0.53); */
+    filter: drop-shadow(0 5px 5px rgba(0, 0, 0,.1));
+    z-index: 100 !important;
 }
 /* header {  
   animation: 1.5s ease-out 0s 1 slideInFromLeft;
@@ -626,7 +676,7 @@ button .circle:hover {
   @media only screen and (min-width: 768px) and (max-width: 1023px) {
   /* Your tablet-specific styles here */
   svg {
-    width: 16vw !important;
+    /* width: 16vw !important; */
   }
   .icon svg,
 .icon img {
@@ -634,6 +684,7 @@ button .circle:hover {
   width: 8vw !important;
   fill: currentColor;
 }
+
 }
 
 @media (max-width: 768px) {
@@ -1188,12 +1239,17 @@ button {
     display: flex;
     padding-right: 0vw;
     /* height: 56vh; */
+    width: 33vw;
     overflow-x: hidden;
     flex-direction: column;
     align-content: center;
     align-items: center;
   }
 
+  .imgsize{
+  height: calc(24vh - 10px);
+  width: 33vw !important;
+}
   /* .block {
     display: none;
   } */

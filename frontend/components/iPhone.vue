@@ -83,13 +83,13 @@
     <!-- active apps -->
     <div class="activeappscont">
       <div class="activeapps">
-              <div v-for="(app, index) in apps2" :key="index" class="activeappsicons">
+              <div v-for="(app, index) in apps3" :key="index" class="activeappsicons">
                   <a :href="app.link">
                   <!-- Use the SVG content directly -->
                   <div v-html="app.icon" class="app-icon"></div>
                   <!-- <span class="app-label">{{ app.name }}</span> -->
                   </a>
-              </div>
+              </div> 
   </div>
 </div>
 
@@ -136,11 +136,11 @@ export default {
           // '/path/to/image3.jpg', // Remove this line if there's no specific image at that location
           ],
     apps: [
-    {
-        name: 'VoiceMemo',
-        icon: '', // Leave it empty for now
-        link: '/app1',
-      },
+    // {
+    //     name: 'VoiceMemo',
+    //     icon: '', // Leave it empty for now
+    //     link: '/app1',
+    //   },
       {
         name: 'SoundCloud',
         icon: '', // Leave it empty for now
@@ -171,7 +171,7 @@ export default {
       // rowtwo
       apps2: [
       {
-        name: 'Books',
+        name: 'Messages',
         icon: '', // Leave it empty for now
         // link: '/app1',
       },
@@ -180,11 +180,11 @@ export default {
         icon: '', // Leave it empty for now
         // link: '/app1',
       },
-      {
-        name: 'Podcast',
-        icon: '', // Leave it empty for now
-        // link: '/app1',
-      },
+      // {
+      //   name: 'Podcast',
+      //   icon: '', // Leave it empty for now
+      //   // link: '/app1',
+      // },
       {
         name: 'FaceTime',
         icon: '', // Leave it empty for now
@@ -197,14 +197,19 @@ export default {
             // rowtwo
             apps3: [
       {
-        name: 'Books',
+        name: 'Mail',
         icon: '', // Leave it empty for now
-        // link: '/app1',
+        link: 'mailto:meganor1997@gmail.com',
       },
       {
-        name: 'Photos',
+        name: 'Notes',
         icon: '', // Leave it empty for now
-        link: '/photogallery/photos',
+        link: './notesapp',
+      },
+      {
+        name: 'SoundCloud',
+        icon: '', // Leave it empty for now
+        link: 'https://soundcloud.com/',
       },
    
       ],
@@ -213,52 +218,53 @@ export default {
 mounted() {
   this.initSwiper();
   // Fetch and set the SVG content dynamically for the 'FaceTime' app
-  this.fetchSVG('voicememo.svg').then((svgContent) => {
-    this.$set(this.apps, 0, {
-      name: 'VoiceMemo',
-      icon: svgContent,
-      link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
-    });
-  });
+  // this.fetchSVG('voicememo.svg').then((svgContent) => {
+  //   this.$set(this.apps, 0, {
+  //     name: 'VoiceMemo',
+  //     icon: svgContent,
+  //     link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
+  //   });
+  // });
   this.fetchSVG('soundcloud2.svg').then((svgContent) => {
-    this.$set(this.apps, 1, {
+    this.$set(this.apps, 0, {
       name: 'SoundCloud',
       icon: svgContent,
       link: 'https://soundcloud.com/',
     });
   });
   this.fetchSVG('mail.svg').then((svgContent) => {
-    this.$set(this.apps, 2, {
+    this.$set(this.apps, 1, {
       name: 'Mail',
       icon: svgContent,
       link: 'mailto:meganor1997@gmail.com',
     });
   });
   this.fetchSVG('notes.svg').then((svgContent) => {
-    this.$set(this.apps, 3, {
+    this.$set(this.apps, 2, {
       name: 'Notes',
       icon: svgContent,
       link: './notesapp',
     });
   });
   this.fetchSVG('instagram.svg').then((svgContent) => {
-    this.$set(this.apps, 4, {
+    this.$set(this.apps, 3, {
       name: 'Instagram',
       icon: svgContent,
       link: 'https://www.instagram.com/ygmegs/',
     });
   });
   this.fetchSVG('photos.svg').then((svgContent) => {
-    this.$set(this.apps, 5, {
+    this.$set(this.apps, 4, {
       name: 'Photos',
       icon: svgContent,
       link: '/photogallery/photos',
     });
   });
+
   // apps2
-  this.fetchSVG('books.svg').then((svgContent) => {
+  this.fetchSVG('messages.svg').then((svgContent) => {
     this.$set(this.apps2, 0, {
-      name: 'Books',
+      name: 'Messages',
       icon: svgContent,
       // link: '/passcode',
     });
@@ -270,33 +276,40 @@ mounted() {
       // link: '/app1',
     });
   });
-  this.fetchSVG('podcast.svg').then((svgContent) => {
-    this.$set(this.apps2, 2, {
-      name: 'Podcast',
-      icon: svgContent,
-      // link: '/app1',
-    });
-  });
+  // this.fetchSVG('podcast.svg').then((svgContent) => {
+  //   this.$set(this.apps2, 2, {
+  //     name: 'Podcast',
+  //     icon: svgContent,
+  //     // link: '/app1',
+  //   });
+  // });
   this.fetchSVG('facetime.svg').then((svgContent) => {
-    this.$set(this.apps2, 3, {
+    this.$set(this.apps2, 2, {
       name: 'FaceTime',
       icon: svgContent,
       // link: '/app1',
     });
   });
      // apps3
-     this.fetchSVG('books.svg').then((svgContent) => {
+     this.fetchSVG('mail.svg').then((svgContent) => {
     this.$set(this.apps3, 0, {
-      name: 'Books',
+      name: 'Mail',
       icon: svgContent,
-      // link: '/passcode',
+      link: 'mailto:meganor1997@gmail.com',
     });
   });
-  this.fetchSVG('photos.svg').then((svgContent) => {
+  this.fetchSVG('notes.svg').then((svgContent) => {
     this.$set(this.apps3, 1, {
-      name: 'Photos',
+      name: 'Notes',
       icon: svgContent,
-      link: '/photogallery/photos',
+      link: './notesapp',
+    });
+  });
+  this.fetchSVG('soundcloud2.svg').then((svgContent) => {
+    this.$set(this.apps3, 2, {
+      name: 'SoundCloud',
+      icon: svgContent,
+      link: 'https://soundcloud.com/',
     });
   });
 },
