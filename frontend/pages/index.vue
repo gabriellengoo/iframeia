@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="deskonly nomobile">
-      <a v-if="showLink" class="homelink deskonly" href="/home">[ Enter ]</a>
+      <a v-if="showLink" class="homelink" href="/home">[ Enter ]</a>
       <iframe
         v-if="isDesktop"
         src="https://healthy-broadleaf-quark.glitch.me/"
