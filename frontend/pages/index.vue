@@ -1,23 +1,20 @@
 <template>
-  <!-- <Tutorial/> -->
-
   <div>
-    <!-- <div class="deskonly nomobile">
+    <div class="deskonly nomobile">
       <a v-if="showLink" class="homelink deskonly" href="/home">[ Enter ]</a>
       <iframe
+        v-if="isDesktop"
         src="https://healthy-broadleaf-quark.glitch.me/"
         width="100%"
         height="600px"
         frameborder="0"
       ></iframe>
-    </div> -->
+    </div>
 
     <div class="mobileonly nodesktop">
       <iPhone /> 
     </div>
   </div>
-
-  <!-- <iPhone /> -->
 </template>
 
 <script>
@@ -28,6 +25,7 @@ export default {
   data() {
     return {
       showLink: false,
+      isDesktop: false,
     };
   },
   mounted() {
@@ -35,6 +33,21 @@ export default {
     setTimeout(() => {
       this.showLink = true;
     }, 10000);
+
+    // Check if the viewport width is greater than a certain threshold
+    this.isDesktop = window.innerWidth > 768; // Adjust the threshold as needed
+
+    // Attach an event listener to handle window resize and update isDesktop accordingly
+    window.addEventListener('resize', this.handleResize);
+  },
+  methods: {
+    handleResize() {
+      this.isDesktop = window.innerWidth > 768; // Adjust the threshold as needed
+    },
+  },
+  beforeDestroy() {
+    // Remove the resize event listener when the component is destroyed
+    window.removeEventListener('resize', this.handleResize);
   },
   components: {
     iPhone,
