@@ -326,7 +326,7 @@ export default {
 <style scoped>
 .innerin{
   height: 100vh;
-    padding-top: 5vh;
+    padding-top: 7vh;
     z-index: 30 !important;
 }
 
