@@ -19,7 +19,7 @@
       <div class="">
         <div
           v-if="!showIframe"
-          class="innerin flex flex-col justify-center items-center"
+          class="innerinframe flex flex-col justify-center items-center"
         >
           <h1 class="text-7xl font-bold tracking-[-0.12em] pb-5">
             <span class="text-blue-500">W</span>
@@ -325,6 +325,13 @@ export default {
 .innerin{
   height: 100vh;
     padding-top: 5vh;
+    z-index: 30 !important;
+}
+
+.innerinframe{
+  height: 100vh;
+    padding-top: 5vh;
+    z-index: 40 !important;
 }
 .swiper-wrapper {
   z-index: 40 !important;
