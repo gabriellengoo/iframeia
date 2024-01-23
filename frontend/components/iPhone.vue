@@ -1,24 +1,26 @@
 <template>
-  <div class="iphone ipadbg">
-      <!-- <div >  
+  <div class="iphone ipadbg" @dblclick="toggleIframeDisplay">
+    <!-- <div >  
           <img class=" mockbg " src="/ipadmock.png" />
       </div> -->
-      
+
     <div class="status-bar"></div>
     <Notification />
-    <Notification2 />
+    <!-- <Notification2 />
     <Notification3 />
-    <Notification4 />
+    <Notification4 /> -->
     <Time />
     <Url />
 
     <!-- <Marquee /> -->
 
     <div class="screen">
-
       <div class="p-5">
-        <div class="flex flex-col justify-center items-center">
-          <h1 class="text-7xl font-bold tracking-[-0.12em] pb-20">
+        <div
+          v-if="!showIframe"
+          class="flex flex-col justify-center items-center"
+        >
+          <h1 class="text-7xl font-bold tracking-[-0.12em] pb-5">
             <span class="text-blue-500">W</span>
             <span class="text-red-500">e</span>
             <span class="text-yellow-500">l</span>
@@ -28,282 +30,305 @@
             <span class="text-blue-500">e</span>
           </h1>
 
-          <div class="text-lg border-[.8px] border-[#b5b5b5] rounded-full p-5 pt-3 pb-3">
-            <h1 class="flex items-center fill-[#b5b5b5]"><SvgSearch></SvgSearch>double click to browse sites we have made</h1>
+          <div
+            class="text-lg w-[80vw] border-[.8px] border-[#b5b5b5] rounded-full p-5 pt-3 pb-3 flex items-center"
+          >
+            <input
+              type="text"
+              class="flex-1 outline-none px-3 py-1"
+              placeholder="double click to browse sites we have made"
+            />
+            <SvgSearch class="fill-[#b5b5b5]"></SvgSearch>
           </div>
         </div>
+
+        <div v-else>
+          <iframe :src="currentIframeUrl" class="w-full h-full"></iframe>
+        </div>
       </div>
-      <!-- <iframe src="https://henryheffernan-os.vercel.app" /> -->
-
-
-
-
     </div>
   </div>
 </template>
 
 <script>
 // import AnalogClock from '@/components/AnalogClock.vue';
-import Time from '@/components/Time.vue';
-import Url from '@/components/Url.vue';
+import Time from "@/components/Time.vue";
+import Url from "@/components/Url.vue";
 // import CalendarWidget from '@/components/CalendarWidget.vue';
-import Notification from '@/components/Notification.vue';
-import Notification2 from '@/components/Notification2.vue';
-import Notification3 from '@/components/Notification3.vue';
-import Notification4 from '@/components/Notification4.vue';
-import Swiper from 'swiper/bundle';
-import 'swiper/swiper-bundle.min.css';
-import PasscodeInput from '@/components/PasscodeInput.vue';
-import Marquee from '~/components/Marquee.vue';
-
+import Notification from "@/components/Notification.vue";
+import Notification2 from "@/components/Notification2.vue";
+import Notification3 from "@/components/Notification3.vue";
+import Notification4 from "@/components/Notification4.vue";
+import Swiper from "swiper/bundle";
+import "swiper/swiper-bundle.min.css";
+import PasscodeInput from "@/components/PasscodeInput.vue";
+import Marquee from "~/components/Marquee.vue";
 
 export default {
   components: {
-  // AnalogClock,
-  Time,
-  // CalendarWidget,
-  Notification,
-  Notification2,
-  Notification3,
-  Notification4,
-  PasscodeInput,
-  Marquee,
+    // AnalogClock,
+    Time,
+    // CalendarWidget,
+    Notification,
+    Notification2,
+    Notification3,
+    Notification4,
+    PasscodeInput,
+    Marquee,
   },
 
   data() {
-  return {
-    isPasscodeVisible: false,
-
+    return {
+      isPasscodeVisible: false,
+      showIframe: false,
+      iframeUrls: [
+        "https://www.alwaproduction.co.uk/",
+        "https://henhouselondon.co.uk/",
+        "https://megan-site.vercel.app/",
+        "https://www.distant-realities.eu/",
+        "https://www.instagram.com/p/CQbgAGYh2tX/?img_index=1",
+        "https://bot.morning.fyi//",
+        // Add more URLs as needed
+      ],
+      currentIframeIndex: 0,
       topRowImages: [
-          require('~/static/homeimg.jpeg'), // Use require for local images
-          // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
-          // '/path/to/image3.jpg', // Remove this line if there's no specific image at that location
-          ],
-    apps: [
-    // {
-    //     name: 'VoiceMemo',
-    //     icon: '', // Leave it empty for now
-    //     link: '/app1',
-    //   },
-      {
-        name: 'SoundCloud',
-        icon: '', // Leave it empty for now
-        link: '/app1',
-      },
-      {
-        name: 'Mail',
-        icon: '',
-        link: '/app1',
-      },
-      {
-        name: 'Notes',
-        icon: '', // Leave it empty for now
-        link: './notesapp',
-      },
-      {
-        name: 'Instagram',
-        icon: '', // Leave it empty for now
-        link: 'https://www.instagram.com/ygmegs/',
-      },
-      {
-        name: 'Photos',
-        icon: '', // Leave it empty for now
-        link: '/photogallery/photos',
-      },
-     
+        require("~/static/homeimg.jpeg"), // Use require for local images
+        // 'https://theeventscalendar.com/knowledgebase/wp-content/uploads/2021/04/Screen-Shot-2021-04-29-at-9.42.57-AM.png',
+        // '/path/to/image3.jpg', // Remove this line if there's no specific image at that location
+      ],
+      apps: [
+        // {
+        //     name: 'VoiceMemo',
+        //     icon: '', // Leave it empty for now
+        //     link: '/app1',
+        //   },
+        {
+          name: "SoundCloud",
+          icon: "", // Leave it empty for now
+          link: "/app1",
+        },
+        {
+          name: "Mail",
+          icon: "",
+          link: "/app1",
+        },
+        {
+          name: "Notes",
+          icon: "", // Leave it empty for now
+          link: "./notesapp",
+        },
+        {
+          name: "Instagram",
+          icon: "", // Leave it empty for now
+          link: "https://www.instagram.com/ygmegs/",
+        },
+        {
+          name: "Photos",
+          icon: "", // Leave it empty for now
+          link: "/photogallery/photos",
+        },
       ],
       // rowtwo
       apps2: [
-      {
-        name: 'Messages',
-        icon: '', // Leave it empty for now
-        // link: '/app1',
-      },
-      {
-        name: 'Home',
-        icon: '', // Leave it empty for now
-        // link: '/app1',
-      },
-      // {
-      //   name: 'Podcast',
-      //   icon: '', // Leave it empty for now
-      //   // link: '/app1',
-      // },
-      {
-        name: 'FaceTime',
-        icon: '', // Leave it empty for now
-        // link: '/app1',
-      },
-     
-      // Define your app objects here
-      // '/facetime.svg',
-      ],
-            // rowtwo
-            apps3: [
-      {
-        name: 'Mail',
-        icon: '', // Leave it empty for now
-        link: 'mailto:meganor1997@gmail.com',
-      },
-      {
-        name: 'Notes',
-        icon: '', // Leave it empty for now
-        link: './notesapp',
-      },
-      {
-        name: 'SoundCloud',
-        icon: '', // Leave it empty for now
-        link: 'https://soundcloud.com/',
-      },
-   
-      ],
-  };
-},
-mounted() {
-  this.initSwiper();
-  // Fetch and set the SVG content dynamically for the 'FaceTime' app
-  // this.fetchSVG('voicememo.svg').then((svgContent) => {
-  //   this.$set(this.apps, 0, {
-  //     name: 'VoiceMemo',
-  //     icon: svgContent,
-  //     link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
-  //   });
-  // });
-  this.fetchSVG('soundcloud2.svg').then((svgContent) => {
-    this.$set(this.apps, 0, {
-      name: 'SoundCloud',
-      icon: svgContent,
-      link: 'https://soundcloud.com/',
-    });
-  });
-  this.fetchSVG('mail.svg').then((svgContent) => {
-    this.$set(this.apps, 1, {
-      name: 'Mail',
-      icon: svgContent,
-      link: 'mailto:meganor1997@gmail.com',
-    });
-  });
-  this.fetchSVG('notes.svg').then((svgContent) => {
-    this.$set(this.apps, 2, {
-      name: 'Notes',
-      icon: svgContent,
-      link: './notesapp',
-    });
-  });
-  this.fetchSVG('instagram.svg').then((svgContent) => {
-    this.$set(this.apps, 3, {
-      name: 'Instagram',
-      icon: svgContent,
-      link: 'https://www.instagram.com/ygmegs/',
-    });
-  });
-  this.fetchSVG('photos.svg').then((svgContent) => {
-    this.$set(this.apps, 4, {
-      name: 'Photos',
-      icon: svgContent,
-      link: '/photogallery/photos',
-    });
-  });
+        {
+          name: "Messages",
+          icon: "", // Leave it empty for now
+          // link: '/app1',
+        },
+        {
+          name: "Home",
+          icon: "", // Leave it empty for now
+          // link: '/app1',
+        },
+        // {
+        //   name: 'Podcast',
+        //   icon: '', // Leave it empty for now
+        //   // link: '/app1',
+        // },
+        {
+          name: "FaceTime",
+          icon: "", // Leave it empty for now
+          // link: '/app1',
+        },
 
-  // apps2
-  this.fetchSVG('messages.svg').then((svgContent) => {
-    this.$set(this.apps2, 0, {
-      name: 'Messages',
-      icon: svgContent,
-      // link: '/passcode',
-    });
-  });
-  this.fetchSVG('home.svg').then((svgContent) => {
-    this.$set(this.apps2, 1, {
-      name: 'Home',
-      icon: svgContent,
-      // link: '/app1',
-    });
-  });
-  // this.fetchSVG('podcast.svg').then((svgContent) => {
-  //   this.$set(this.apps2, 2, {
-  //     name: 'Podcast',
-  //     icon: svgContent,
-  //     // link: '/app1',
-  //   });
-  // });
-  this.fetchSVG('facetime.svg').then((svgContent) => {
-    this.$set(this.apps2, 2, {
-      name: 'FaceTime',
-      icon: svgContent,
-      // link: '/app1',
-    });
-  });
-     // apps3
-     this.fetchSVG('mail.svg').then((svgContent) => {
-    this.$set(this.apps3, 0, {
-      name: 'Mail',
-      icon: svgContent,
-      link: 'mailto:meganor1997@gmail.com',
-    });
-  });
-  this.fetchSVG('notes.svg').then((svgContent) => {
-    this.$set(this.apps3, 1, {
-      name: 'Notes',
-      icon: svgContent,
-      link: './notesapp',
-    });
-  });
-  this.fetchSVG('soundcloud2.svg').then((svgContent) => {
-    this.$set(this.apps3, 2, {
-      name: 'SoundCloud',
-      icon: svgContent,
-      link: 'https://soundcloud.com/',
-    });
-  });
-},
-methods: {
-  openPasscode() {
-    this.isPasscodeVisible = true;
+        // Define your app objects here
+        // '/facetime.svg',
+      ],
+      // rowtwo
+      apps3: [
+        {
+          name: "Mail",
+          icon: "", // Leave it empty for now
+          link: "mailto:meganor1997@gmail.com",
+        },
+        {
+          name: "Notes",
+          icon: "", // Leave it empty for now
+          link: "./notesapp",
+        },
+        {
+          name: "SoundCloud",
+          icon: "", // Leave it empty for now
+          link: "https://soundcloud.com/",
+        },
+      ],
+    };
   },
-  closePasscode() {
-    this.isPasscodeVisible = false;
+  mounted() {
+    this.initSwiper();
+    // Fetch and set the SVG content dynamically for the 'FaceTime' app
+    // this.fetchSVG('voicememo.svg').then((svgContent) => {
+    //   this.$set(this.apps, 0, {
+    //     name: 'VoiceMemo',
+    //     icon: svgContent,
+    //     link: 'https://myaccount.google.com/?utm_source=sign_in_no_continue&pli=1',
+    //   });
+    // });
+    this.fetchSVG("soundcloud2.svg").then((svgContent) => {
+      this.$set(this.apps, 0, {
+        name: "SoundCloud",
+        icon: svgContent,
+        link: "https://soundcloud.com/",
+      });
+    });
+    this.fetchSVG("mail.svg").then((svgContent) => {
+      this.$set(this.apps, 1, {
+        name: "Mail",
+        icon: svgContent,
+        link: "mailto:meganor1997@gmail.com",
+      });
+    });
+    this.fetchSVG("notes.svg").then((svgContent) => {
+      this.$set(this.apps, 2, {
+        name: "Notes",
+        icon: svgContent,
+        link: "./notesapp",
+      });
+    });
+    this.fetchSVG("instagram.svg").then((svgContent) => {
+      this.$set(this.apps, 3, {
+        name: "Instagram",
+        icon: svgContent,
+        link: "https://www.instagram.com/ygmegs/",
+      });
+    });
+    this.fetchSVG("photos.svg").then((svgContent) => {
+      this.$set(this.apps, 4, {
+        name: "Photos",
+        icon: svgContent,
+        link: "/photogallery/photos",
+      });
+    });
+
+    // apps2
+    this.fetchSVG("messages.svg").then((svgContent) => {
+      this.$set(this.apps2, 0, {
+        name: "Messages",
+        icon: svgContent,
+        // link: '/passcode',
+      });
+    });
+    this.fetchSVG("home.svg").then((svgContent) => {
+      this.$set(this.apps2, 1, {
+        name: "Home",
+        icon: svgContent,
+        // link: '/app1',
+      });
+    });
+    // this.fetchSVG('podcast.svg').then((svgContent) => {
+    //   this.$set(this.apps2, 2, {
+    //     name: 'Podcast',
+    //     icon: svgContent,
+    //     // link: '/app1',
+    //   });
+    // });
+    this.fetchSVG("facetime.svg").then((svgContent) => {
+      this.$set(this.apps2, 2, {
+        name: "FaceTime",
+        icon: svgContent,
+        // link: '/app1',
+      });
+    });
+    // apps3
+    this.fetchSVG("mail.svg").then((svgContent) => {
+      this.$set(this.apps3, 0, {
+        name: "Mail",
+        icon: svgContent,
+        link: "mailto:meganor1997@gmail.com",
+      });
+    });
+    this.fetchSVG("notes.svg").then((svgContent) => {
+      this.$set(this.apps3, 1, {
+        name: "Notes",
+        icon: svgContent,
+        link: "./notesapp",
+      });
+    });
+    this.fetchSVG("soundcloud2.svg").then((svgContent) => {
+      this.$set(this.apps3, 2, {
+        name: "SoundCloud",
+        icon: svgContent,
+        link: "https://soundcloud.com/",
+      });
+    });
   },
+  methods: {
+    toggleIframeDisplay() {
+      this.showIframe = !this.showIframe;
+      if (this.showIframe) {
+        this.currentIframeIndex =
+          (this.currentIframeIndex + 1) % this.iframeUrls.length;
+      }
+    },
+    openPasscode() {
+      this.isPasscodeVisible = true;
+    },
+    closePasscode() {
+      this.isPasscodeVisible = false;
+    },
     // Call this method to show the notification
     showCustomNotification() {
-    this.$refs.notification.notificationText = "Custom Notification!";
-    this.$refs.notification.showNotification();
-  },
-  fetchSVG(url) {
-    return fetch(url)
-      .then((response) => response.text())
-      .catch((error) => {
-        console.error('Error fetching SVG:', error);
-        return ''; // Return an empty string if there's an error
+      this.$refs.notification.notificationText = "Custom Notification!";
+      this.$refs.notification.showNotification();
+    },
+    fetchSVG(url) {
+      return fetch(url)
+        .then((response) => response.text())
+        .catch((error) => {
+          console.error("Error fetching SVG:", error);
+          return ""; // Return an empty string if there's an error
+        });
+    },
+    initSwiper() {
+      // Initialize Swiper with options
+      this.swiper = new Swiper(this.$refs.slider, {
+        slidesPerView: "auto",
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
       });
+    },
   },
-initSwiper() {
-    // Initialize Swiper with options
-    this.swiper = new Swiper(this.$refs.slider, {
-      slidesPerView: 'auto',
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-      },
-    });
+  computed: {
+    currentIframeUrl() {
+      return this.iframeUrls[this.currentIframeIndex] || "";
+    },
   },
-},
-
 };
 </script>
 
 <style scoped>
-
 .swiper-wrapper {
-z-index: 40 !important;
+  z-index: 40 !important;
 }
 
 .slider {
-height: calc(100% - 0.5rem);
+  height: calc(100% - 0.5rem);
 }
 .top-row-image {
-position: relative;
-display: inline-block;
+  position: relative;
+  display: inline-block;
 }
 
 .overlay-text {
@@ -326,9 +351,9 @@ display: inline-block;
   font-weight: normal;
 }
 .ipadbg {
-/* background-color: rgb(62, 150, 151);; */
-height: 100vh; /* Adjust the height as needed */
-/* Additional styles for your content */
+  /* background-color: rgb(62, 150, 151);; */
+  height: 100vh; /* Adjust the height as needed */
+  /* Additional styles for your content */
 }
 .iphone {
   width: 100vw;
@@ -354,13 +379,12 @@ height: 100vh; /* Adjust the height as needed */
   display: flex;
   display: grid;
   flex-wrap: wrap;
-  justify-content: center;
+  /* justify-content: center; */
   flex-direction: column;
   align-items: center;
   align-content: center;
   /* border-radius: 32px; */
 }
-
 
 /* .grid {
 display: grid;
@@ -369,35 +393,35 @@ grid-gap: 10px;
 max-width: 600px;
 } */
 
-.grid2{
+.grid2 {
   display: flex;
   justify-content: center;
 }
 
-.activeappscont{
+.activeappscont {
   justify-content: center;
   display: flex;
 }
 
-.activeapps{
+.activeapps {
   display: flex;
   justify-content: center;
-  background-color: rgba(253,253,253,0.32157);
+  background-color: rgba(253, 253, 253, 0.32157);
   width: -moz-fit-content;
   width: fit-content;
   border-radius: 32px;
 }
 
-.activeappsicons{
+.activeappsicons {
   padding: 1vw;
-  
+
   /* padding-top: 0; */
 }
-.grid2inner{
+.grid2inner {
   display: grid;
   grid-column: span 2;
 }
-.toprow{
+.toprow {
   width: 100vw;
   /* height: 35vh; */
   overflow: hidden;
@@ -415,118 +439,123 @@ max-width: 600px;
 }
 
 .top-row-image img {
-width: 100%;
-height: 100%;
-border-radius: 12px;
-object-fit: cover; /* Ensure the image covers the entire square */
-/* position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  object-fit: cover; /* Ensure the image covers the entire square */
+  /* position: absolute;
 top: 0;
 left: 0; */
 }
 
-.toprowinner{
+.toprowinner {
   display: flex;
   width: 60vw;
   height: 40vh;
 }
-.square{
+.square {
   background: #000;
 }
 
 .grid {
-display: grid;
-height: 15vw;
-grid-template-columns: repeat(2, 1fr);
-grid-gap: 10px; /* Adjust the gap between squares */
-max-width: 600px; /* Adjust the maximum width of the grid */
+  display: grid;
+  height: 15vw;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px; /* Adjust the gap between squares */
+  max-width: 600px; /* Adjust the maximum width of the grid */
 }
 
 .top-row-imageg {
-/* padding-top: 50%; */
- /* Create a square aspect ratio */
-position: relative;
-overflow: hidden;
-background: #000;
-border-radius: 12px;
+  /* padding-top: 50%; */
+  /* Create a square aspect ratio */
+  position: relative;
+  overflow: hidden;
+  background: #000;
+  border-radius: 12px;
 }
 
 .top-row-imageg div {
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
-.clock{
+.clock {
   /* padding-top: 50%;  */
   /* Create a square aspect ratio */
-position: relative;
-overflow: hidden;
-background-color: rgba(253,253,253,0.32157);
-border-radius: 12px; 
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(253, 253, 253, 0.32157);
+  border-radius: 12px;
 }
 
-.clock div{
+.clock div {
   width: 100%;
-height: 100%;
+  height: 100%;
 }
 
 .bottom-row-image {
-grid-column: span 2; /* Span two columns to create a big square */
-/* padding-top: 100%;  */
-position: relative;
-overflow: hidden;
-background-color: rgba(253,253,253,0.32157);
-border-radius: 12px;
+  grid-column: span 2; /* Span two columns to create a big square */
+  /* padding-top: 100%;  */
+  position: relative;
+  overflow: hidden;
+  background-color: rgba(253, 253, 253, 0.32157);
+  border-radius: 12px;
 }
 
 .bottom-row-image div {
-width: 100%;
-height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .dots-container {
-display: flex;
-justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .dot {
-width: 7px;
-height: 7px;
-border-radius: 50%;
-margin-right: 10px; /* Adjust the spacing between the dots */
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 10px; /* Adjust the spacing between the dots */
 }
 
 .filled {
-background-color: #ffffff; /* Set the color for the filled dot */
+  background-color: #ffffff; /* Set the color for the filled dot */
 }
 
 .faded {
-background-color: rgba(255, 255, 255, 0.5); /* Set the color for the faded dot (adjust the alpha value for the desired level of fading) */
+  background-color: rgba(
+    255,
+    255,
+    255,
+    0.5
+  ); /* Set the color for the faded dot (adjust the alpha value for the desired level of fading) */
 }
 .app {
-padding: 3vw;
-padding-top: 0;
-transition: transform 0.3s ease; /* Add transition for smooth scaling */
+  padding: 3vw;
+  padding-top: 0;
+  transition: transform 0.3s ease; /* Add transition for smooth scaling */
 }
 
 .activeappsicons:hover {
-transform: scale(1.1); /* Scale up on hover */
+  transform: scale(1.1); /* Scale up on hover */
 }
 
-.activeappsicons{
-transition: transform 0.3s ease; /* Add transition for smooth scaling */
+.activeappsicons {
+  transition: transform 0.3s ease; /* Add transition for smooth scaling */
 }
 
 .app:hover {
-transform: scale(1.1); /* Scale up on hover */
+  transform: scale(1.1); /* Scale up on hover */
 }
 
 .app-icon {
-width: 60px;
-height: 60px;
-border-radius: 12px;
-margin-bottom: 5px;
-border-radius: 12px; /* Curved edges */
-overflow: hidden;
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  margin-bottom: 5px;
+  border-radius: 12px; /* Curved edges */
+  overflow: hidden;
 }
 
 /* .app-icon svg {
@@ -550,46 +579,42 @@ overflow: hidden;
   flex-wrap: wrap;
 }
 
-
 @media (max-width: 768px) {
-.grid2 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  width: 100% !important;
-}
+  .grid2 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100% !important;
+  }
 
-.grid3 {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  width: 100% !important;
-  /* flex-direction: row;
+  .grid3 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: 100% !important;
+    /* flex-direction: row;
   display: flex;
   flex-wrap: wrap; */
-}
+  }
 
-.mobilegrid3mb{
-display: flex;
-width: 100% !important;
-justify-content: flex-start;
-}
+  .mobilegrid3mb {
+    display: flex;
+    width: 100% !important;
+    justify-content: flex-start;
+  }
 
-.mobilegrid{
-display: flex;
-width: 100% !important;
-padding: 4.5rem;
-}
-
+  .mobilegrid {
+    display: flex;
+    width: 100% !important;
+    padding: 4.5rem;
+  }
 }
 
 @media (max-width: 320px) {
-  .mobilegrid{
-display: flex;
-width: 100% !important;
-padding: 2.5rem;
+  .mobilegrid {
+    display: flex;
+    width: 100% !important;
+    padding: 2.5rem;
+  }
 }
-}
-
-
 </style>

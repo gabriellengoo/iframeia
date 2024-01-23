@@ -16,7 +16,7 @@
                   <p class="font-light">Hey, Check your notes app!</p>
                   <img  class=" cat " src="/cat.gif"/>
                 </div> -->
-                <p class="font-light">Hey, Check your notes app!</p>
+                <p class="font-light">Hey, double click to browse sites we have made!</p>
               </div>
             </div>
           </div>
