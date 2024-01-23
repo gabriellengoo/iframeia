@@ -38,8 +38,8 @@ export default {
   background-color: #424242;
   padding: 10px;
   /* padding-top: 1px; */
-  position: relative;
-    top: 6vh;
+  position: fixed;
+    top: 4vh;
   width: 100vw;
   z-index: 100000;
   display: flex;
