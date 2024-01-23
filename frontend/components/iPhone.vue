@@ -45,7 +45,7 @@
           <!-- <iframe src="https://megan-site.vercel.app/" class="w-full h-full"></iframe> -->
         </div>
 
-        <div v-else>
+        <div class="innerin" v-else>
           <iframe :src="currentIframeUrl" class="w-full h-full"></iframe>
         </div>
       </div>
