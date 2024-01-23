@@ -88,9 +88,11 @@ export default {
         "https://www.alwaproduction.co.uk/",
         "https://henhouselondon.co.uk/",
         "https://megan-site.vercel.app/home",
+        "https://theancestorssound.nyt.org.uk/",
+        "https://www.linkedin.com/in/gabrielle-ngoo-259088255/",
         "https://www.distant-realities.eu/",
-        "https://www.instagram.com/p/CQbgAGYh2tX/?img_index=1",
-        "https://bot.morning.fyi//",
+        "https://www.instagram.com/is_this_gabrielle/",
+        "https://bot.morning.fyi/",
         // Add more URLs as needed
       ],
       currentIframeIndex: 0,
