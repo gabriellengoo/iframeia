@@ -1,15 +1,6 @@
 <template>
   <div class="ios-header">
-    <div class="status-bar">
-      <div class="time">{{ currentTime }}</div>
-      <div class="battside">  
-        <div class="battery-icon">
-          <div class="pl-1"><SvgWifi></SvgWifi></div>
-          <div class="pl-1"> 4G </div>
-          <div class="pl-1"><SvgBattery></SvgBattery></div>
-        </div>
-      </div>
-    </div>
+  <div class="url">internetarchitect.online</div>
   </div>
 </template>
 
@@ -47,14 +38,27 @@ export default {
   background-color: #424242;
   padding: 10px;
   /* padding-top: 1px; */
-  position: fixed;
-  /* top: 2vh; */
+  position: relative;
+    top: 6vh;
   width: 100vw;
   z-index: 100000;
+  display: flex;
+    justify-content: center;
   /* border-top: #424242 5px solid; */
   border-top-right-radius: 5px;
   border-top-left-radius: 5px;
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
+}
+
+.url{
+  background-color: #767676;
+  font-size: larger;
+    color: white;
+  border-radius: 45px;
+  width: 100vw;
+  padding: 1.5vw;
+  display: flex;
+  justify-content: center;
 }
 
 .status-bar {

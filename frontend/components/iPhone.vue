@@ -10,88 +10,31 @@
     <Notification3 />
     <Notification4 />
     <Time />
+    <Url />
 
-    <Marquee />
+    <!-- <Marquee /> -->
 
     <div class="screen">
-      <div>
-  <!-- Your main component content goes here -->
-  <!-- <button @click="openPasscode">Open Passcode Modal</button> -->
-  <PasscodeInput v-if="isPasscodeVisible" @close="closePasscode" />
-</div>
 
-      <div class="screen slider " ref="slider">
-          <div class="swiper-wrapper">
-            <!-- Slide 1 -->
-            <div class="swiper-slide mobilegrid w-[100vw] p-10 flex justify-center">
-                      <!-- top grid all -->
-                      <div class="">
-                        <!-- Two rows with 6 app icons each -->
-                            <div class="grid2 w-[100vw]">
-                            <div v-for="(app, index) in apps" :key="index" class="app">
-                                <a :href="app.link">
-                                <!-- Use the SVG content directly -->
-                                <div v-html="app.icon" class="app-icon"></div>
-                                <span class="app-label">{{ app.name }}</span>
-                                </a>
-                            </div>
-                            </div>
+      <div class="p-5">
+        <div class="flex flex-col justify-center items-center">
+          <h1 class="text-7xl font-bold tracking-[-0.12em] pb-20">
+            <span class="text-blue-500">W</span>
+            <span class="text-red-500">e</span>
+            <span class="text-yellow-500">l</span>
+            <span class="text-blue-500">c</span>
+            <span class="text-green-500">o</span>
+            <span class="text-red-500">m</span>
+            <span class="text-blue-500">e</span>
+          </h1>
 
-                        <!-- Two rows with 6 app icons each -->
-                            <div class="grid2 w-[100vw]">
-                                <div v-for="(app, index) in apps2" :key="index" class="app">
-                                  <button @click="openPasscode">
-                                  <!-- <a :href="app.link"> -->
-                                    <!-- Use the SVG content directly -->
-                                    <div v-html="app.icon" class="app-icon"></div>
-                                    <span class="app-label">{{ app.name }}</span>
-                                    <!-- </a> -->
-                                  </button>
-                                </div>
-                            </div>
-                          </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="swiper-slide mobilegrid3mb w-[100vw] flex justify-center p-10">
-              <div class="">
-                        <!-- Two rows with 6 app icons each -->
-                            <div class="grid3">
-                              <!-- <div>easter egg app</div> -->
-                            <div v-for="(app, index) in apps3" :key="index" class="app">
-                              <button @click="openPasscode">
-                              <!-- <a :href="app.link"> -->
-                                <!-- Use the SVG content directly -->
-                                <div v-html="app.icon" class="app-icon"></div>
-                                <span class="app-label">{{ app.name }}</span>
-                                <!-- </a> -->
-                              </button>
-                            </div>
-                            </div>
-                          </div>
-            </div>
-
-            <!-- ... Add more slides as needed ... -->
+          <div class="text-lg border-[.8px] border-[#b5b5b5] rounded-full p-5 pt-3 pb-3">
+            <h1 class="flex items-center fill-[#b5b5b5]"><SvgSearch></SvgSearch>double click to browse sites we have made</h1>
           </div>
-
-          <!-- Add Swiper pagination -->
-          <div class="dots-container swiper-pagination"></div>
-
         </div>
+      </div>
+      <!-- <iframe src="https://henryheffernan-os.vercel.app" /> -->
 
-
-    <!-- active apps -->
-    <div class="activeappscont">
-      <div class="activeapps">
-              <div v-for="(app, index) in apps3" :key="index" class="activeappsicons">
-                  <a :href="app.link">
-                  <!-- Use the SVG content directly -->
-                  <div v-html="app.icon" class="app-icon"></div>
-                  <!-- <span class="app-label">{{ app.name }}</span> -->
-                  </a>
-              </div> 
-  </div>
-</div>
 
 
 
@@ -102,6 +45,7 @@
 <script>
 // import AnalogClock from '@/components/AnalogClock.vue';
 import Time from '@/components/Time.vue';
+import Url from '@/components/Url.vue';
 // import CalendarWidget from '@/components/CalendarWidget.vue';
 import Notification from '@/components/Notification.vue';
 import Notification2 from '@/components/Notification2.vue';
@@ -382,10 +326,7 @@ display: inline-block;
   font-weight: normal;
 }
 .ipadbg {
-background-image: url('~static/ipadbg.jpeg'); /* Adjust the file name and path accordingly */
-background-size: cover; /* Adjust as needed */
-background-position: center; /* Adjust as needed */
-background-repeat: no-repeat; /* Adjust as needed */
+/* background-color: rgb(62, 150, 151);; */
 height: 100vh; /* Adjust the height as needed */
 /* Additional styles for your content */
 }

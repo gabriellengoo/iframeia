@@ -61,16 +61,16 @@ export default {
     // "@nuxtjs/sanity",
     // '@nuxtjs/sanity/module',
     'nuxt-gsap-module',
-    '@nuxtjs/sanity/module',
+    // '@nuxtjs/sanity/module',
     '@nuxt/image'
   ],
 
-  sanity: {
-    // module options
-    projectId: 'xezmn8bb',
-    apiVersion: '2023-09-05',
-    useCdn: false, 
-  },
+  // sanity: {
+  //   // module options
+  //   projectId: 'xezmn8bb',
+  //   apiVersion: '2023-09-05',
+  //   useCdn: false, 
+  // },
 
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -95,11 +95,11 @@ export default {
     },
   },
 
-  image: {
-    sanity: {
-      projectId: 'xezmn8bb',
-      dataset: 'production',
-      useCdn: false, 
-    },
-  },
+  // image: {
+  //   sanity: {
+  //     projectId: 'xezmn8bb',
+  //     dataset: 'production',
+  //     useCdn: false, 
+  //   },
+  // },
 }
