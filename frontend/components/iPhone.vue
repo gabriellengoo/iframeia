@@ -15,10 +15,11 @@
     <!-- <Marquee /> -->
 
     <div class="screen">
-      <div class="p-5">
+      <!-- p-5 -->
+      <div class="">
         <div
           v-if="!showIframe"
-          class="flex flex-col justify-center items-center"
+          class="innerin flex flex-col justify-center items-center"
         >
           <h1 class="text-7xl font-bold tracking-[-0.12em] pb-5">
             <span class="text-blue-500">W</span>
@@ -39,7 +40,9 @@
               placeholder="double click to browse sites we have made"
             />
             <SvgSearch class="fill-[#b5b5b5]"></SvgSearch>
+
           </div>
+          <!-- <iframe src="https://megan-site.vercel.app/" class="w-full h-full"></iframe> -->
         </div>
 
         <div v-else>
@@ -319,6 +322,10 @@ export default {
 </script>
 
 <style scoped>
+.innerin{
+  height: 100vh;
+    padding-top: 5vh;
+}
 .swiper-wrapper {
   z-index: 40 !important;
 }
@@ -370,20 +377,19 @@ export default {
 }
 
 .screen {
-  height: calc(100% - 20px);
-  width: 100vw;
-  /* height: 100vh; */
-  /* background-color: #fff; */
-  overflow-y: auto;
-  /* padding: 10px; */
-  display: flex;
-  display: grid;
-  flex-wrap: wrap;
-  /* justify-content: center; */
-  flex-direction: column;
-  align-items: center;
-  align-content: center;
-  /* border-radius: 32px; */
+    /* height: calc(100% - 20px); */
+    width: 100vw;
+    height: 100vh;
+    /* background-color: #fff; */
+    /* overflow-y: auto; */
+    /* padding: 10px; */
+    display: flex;
+    display: grid;
+    /* flex-wrap: wrap; */
+    /* justify-content: center; */
+    /* flex-direction: column; */
+    /* align-items: center; */
+    /* align-content: center; */
 }
 
 /* .grid {
