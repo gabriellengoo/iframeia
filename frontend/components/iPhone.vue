@@ -84,7 +84,7 @@ export default {
       iframeUrls: [
         "https://www.alwaproduction.co.uk/",
         "https://henhouselondon.co.uk/",
-        "https://megan-site.vercel.app/",
+        "https://megan-site.vercel.app/home",
         "https://www.distant-realities.eu/",
         "https://www.instagram.com/p/CQbgAGYh2tX/?img_index=1",
         "https://bot.morning.fyi//",
