@@ -55,7 +55,7 @@ html {
   /* background-image: url('~static/ipadmock.png'); */
   height: 100vh;
   z-index: 10000;
-  position: absolute;
+  /* position: absolute; */
   pointer-events: none;
 }
 

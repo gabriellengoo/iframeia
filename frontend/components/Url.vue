@@ -1,7 +1,8 @@
 <template>
   <div class="ios-header ">
   <!-- <div class="url">internetarchitect.online</div> -->
-  <div class="url uppercase  botnoti">Double tap me</div>
+  <div class="url uppercase text-9xl  botnoti">Double tap me</div>
+  
   </div>
 </template>
 
@@ -36,11 +37,11 @@ export default {
 
 <style scoped>
 .ios-header {
-  /* background-color: #424242; */
+  background-color: #ffffff;
   padding: 10px;
   /* padding-top: 1px; */
   position: fixed;
-    top: 4vh;
+    /* top: 4vh; */
   width: 100vw;
   z-index: 100000;
   display: flex;
@@ -51,17 +52,26 @@ export default {
   /* box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); */
 }
 
+.ios-header:hover{
+  background-color: #ffee00;
+  color: #ffffff;
+}
+
 .url{
   /* background-color: #767676; */
-  font-size: larger;
+  /* font-size: larger; */
     color: white;
     color: black;
   border-radius: 45px;
   width: 100vw;
   padding: 1.5vw;
-  font-size: xx-large;
+  /* font-size: xx-large; */
   display: flex;
   justify-content: center;
+}
+
+.url:hover{
+  color: #ffffff;
 }
 
 .status-bar {

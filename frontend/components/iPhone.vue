@@ -9,7 +9,7 @@
     <!-- <Notification2 />
     <Notification3 />
     <Notification4 /> -->
-    <Time />
+    <!-- <Time /> -->
     <Url />
 
     <!-- <Marquee /> -->
@@ -31,9 +31,15 @@
             <span class="text-blue-500">e</span>
           </h1> -->
 
-          <div
+          <div>
+            <img class="mockbg" src="@/static/iatext.png" alt="IA" />
+          </div>
+
+          <!-- <div
             class="text-lg w-[80vw] border-[.8px] border-[#b5b5b5] rounded-full p-5 pt-3 pb-3 flex items-center"
           >
+     
+         
             <input
               type="text"
               class="flex-1 outline-none px-3 py-1"
@@ -41,7 +47,7 @@
             />
             <SvgSearch class="fill-[#b5b5b5]"></SvgSearch>
 
-          </div>
+          </div> -->
           <!-- <iframe src="https://www.alwaproduction.co.uk/" class="w-full h-full"></iframe> -->
         </div>
 
@@ -87,6 +93,8 @@ export default {
       iframeUrls: [
         "https://henhouselondon.co.uk/",
         "https://www.alwaproduction.co.uk/",
+        // "http://localhost:3000/spam",
+        "https://www.are.na/2sx6_wz8byo/there-must-be-an-error",
         "https://megan-site.vercel.app/home",
         "https://theancestorssound.nyt.org.uk/",
         "https://www.linkedin.com/in/gabrielle-ngoo-259088255/",
@@ -326,7 +334,7 @@ export default {
 <style scoped>
 .innerin{
   height: 100vh;
-    /* padding-top: 5vh; */
+    padding-top: 12.5vh;
     z-index: 30 !important;
 }
 
@@ -367,7 +375,7 @@ export default {
   font-weight: normal;
 }
 .ipadbg {
-  /* background-color: rgb(62, 150, 151);; */
+  /* background-color: rgb(62, 150, 151); */
   height: 100vh; /* Adjust the height as needed */
   /* Additional styles for your content */
 }
