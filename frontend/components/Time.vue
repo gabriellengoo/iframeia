@@ -44,7 +44,7 @@ export default {
 
 <style scoped>
 .ios-header {
-  background-color: #424242;
+  /* background-color: #424242; */
   padding: 10px;
   /* padding-top: 1px; */
   position: fixed;

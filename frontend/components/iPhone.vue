@@ -5,7 +5,7 @@
       </div> -->
 
     <div class="status-bar"></div>
-    <Notification />
+    <!-- <Notification /> -->
     <!-- <Notification2 />
     <Notification3 />
     <Notification4 /> -->
@@ -21,7 +21,7 @@
           v-if="!showIframe"
           class="innerinframe flex flex-col justify-center items-center"
         >
-          <h1 class="text-7xl font-bold tracking-[-0.12em] pb-5">
+          <!-- <h1 class="text-7xl font-bold tracking-[-0.12em] pb-5">
             <span class="text-blue-500">W</span>
             <span class="text-red-500">e</span>
             <span class="text-yellow-500">l</span>
@@ -29,7 +29,7 @@
             <span class="text-green-500">o</span>
             <span class="text-red-500">m</span>
             <span class="text-blue-500">e</span>
-          </h1>
+          </h1> -->
 
           <div
             class="text-lg w-[80vw] border-[.8px] border-[#b5b5b5] rounded-full p-5 pt-3 pb-3 flex items-center"
@@ -42,7 +42,7 @@
             <SvgSearch class="fill-[#b5b5b5]"></SvgSearch>
 
           </div>
-          <!-- <iframe src="https://megan-site.vercel.app/" class="w-full h-full"></iframe> -->
+          <!-- <iframe src="https://www.alwaproduction.co.uk/" class="w-full h-full"></iframe> -->
         </div>
 
         <div class="innerin" v-else>
@@ -324,13 +324,13 @@ export default {
 <style scoped>
 .innerin{
   height: 100vh;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
     z-index: 30 !important;
 }
 
 .innerinframe{
   height: 100vh;
-    padding-top: 5vh;
+    /* padding-top: 5vh; */
     z-index: 40 !important;
 }
 .swiper-wrapper {

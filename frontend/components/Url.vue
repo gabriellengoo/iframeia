@@ -1,6 +1,7 @@
 <template>
-  <div class="ios-header">
-  <div class="url">internetarchitect.online</div>
+  <div class="ios-header ">
+  <!-- <div class="url">internetarchitect.online</div> -->
+  <div class="url uppercase  botnoti">Double tap me</div>
   </div>
 </template>
 
@@ -35,7 +36,7 @@ export default {
 
 <style scoped>
 .ios-header {
-  background-color: #424242;
+  /* background-color: #424242; */
   padding: 10px;
   /* padding-top: 1px; */
   position: fixed;
@@ -51,12 +52,14 @@ export default {
 }
 
 .url{
-  background-color: #767676;
+  /* background-color: #767676; */
   font-size: larger;
     color: white;
+    color: black;
   border-radius: 45px;
   width: 100vw;
   padding: 1.5vw;
+  font-size: xx-large;
   display: flex;
   justify-content: center;
 }

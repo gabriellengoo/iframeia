@@ -55,7 +55,7 @@
     /* display: flex; */
 
 }
-
+ 
 .content {
   display: flex;
   animation: marquee 58s linear infinite; /* Adjust the duration as needed */
